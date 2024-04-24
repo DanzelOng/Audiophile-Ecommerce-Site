@@ -1,0 +1,31 @@
+// breakpoints taken with reference from TailWind CSS
+
+@mixin for-mobile-only {
+  @media (max-width: 43.73em) {
+    @content;
+  }
+}
+
+@mixin for-tablet-up {
+  @media (min-width: 43.75em) {
+    @content;
+  }
+}
+
+@mixin for-tablet-and-below {
+  @media (max-width: 63.97em) {
+    @content;
+  }
+}
+
+@mixin for-desktop-up {
+  @media (min-width: 64em) {
+    @content;
+  }
+}
+
+@mixin for-lg-desktop-up {
+  @media (min-width: 80em) {
+    @content;
+  }
+}
