@@ -1,0 +1,95 @@
+@use '../../utils/breakpoints' as breakpoint;
+
+.header {
+  &__navigation-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    // header to be above the overlay when applied
+    z-index: 1001;
+    background-color: hsl(0 0% 9.8%);
+  }
+
+  &__wrapper {
+    position: relative;
+    width: min(100% - 3rem, 69.375rem);
+    margin-inline: auto;
+  }
+
+  &__navigation {
+    position: relative;
+    z-index: 10;
+    font-weight: var(--fw-600);
+    color: hsl(var(--clr-white-1));
+    display: flex;
+    gap: 1.8rem;
+    justify-content: center;
+    align-items: center;
+    padding-block: 1.125rem;
+    border-bottom: 1px solid hsl(var(--clr-white-1) / 0.075);
+
+    .icon {
+      width: 1.3rem;
+      aspect-ratio: 1;
+      fill: hsl(var(--clr-white-1));
+      transition: fill 0.2s;
+      display: flex;
+      justify-content: center;
+    }
+
+    .icon:hover {
+      fill: hsl(var(--clr-medium-orange));
+    }
+
+    .primary-navigation {
+      display: none;
+      letter-spacing: 0.7px;
+    }
+
+    @include breakpoint.for-desktop-up {
+      .btn--hamburger {
+        display: none;
+      }
+
+      .primary-navigation {
+        text-transform: uppercase;
+        display: flex;
+        justify-content: center;
+        gap: clamp(5rem, 5vw, 6.5rem);
+
+        a:hover {
+          color: hsl(var(--clr-medium-orange));
+        }
+      }
+    }
+
+    @include breakpoint.for-tablet-up {
+      justify-content: space-between;
+    }
+
+    @include breakpoint.for-tablet-and-below {
+      .link--cart {
+        margin-left: auto;
+      }
+    }
+
+    @include breakpoint.for-mobile-only {
+      justify-content: space-between;
+
+      .link--cart {
+        margin-left: revert;
+      }
+    }
+  }
+
+  &__currentPage-label {
+    color: hsl(var(--clr-white-1));
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: var(--fw-600);
+    font-size: var(--fs-700);
+    letter-spacing: 1px;
+    padding-block: 1.5rem;
+  }
+}
