@@ -1,0 +1,84 @@
+@use '../../utils/breakpoints' as breakpoint;
+
+.header__hero {
+  display: grid;
+
+  & > * {
+    grid-area: 1 / 1;
+  }
+
+  &-content {
+    color: hsl(var(--clr-white-1));
+    align-self: center;
+    text-align: center;
+
+    & > * + * {
+      margin-top: 1rem;
+    }
+
+    @include breakpoint.for-tablet-up {
+      & > * + * {
+        margin-top: 1.6rem;
+      }
+    }
+  }
+
+  &-subheading,
+  &-heading {
+    text-transform: uppercase;
+  }
+
+  &-heading {
+    font-size: var(--fs-900);
+    line-height: 1.3;
+    max-width: 11ch;
+    margin-inline: auto;
+  }
+
+  &-subheading {
+    font-weight: var(--fw-300);
+    color: hsl(var(--clr-white-1) / 0.7);
+    letter-spacing: 0.5rem;
+  }
+
+  &-info {
+    line-height: 1.65;
+    color: hsl(var(--clr-white-1) / 0.75);
+    max-width: 30ch;
+    margin-inline: auto;
+  }
+
+  @include breakpoint.for-tablet-up {
+    width: min(100% - 3rem, 69.375rem);
+    margin-inline: auto;
+  }
+
+  @include breakpoint.for-desktop-up {
+    padding-bottom: 2rem;
+    grid-template-columns: auto 1fr;
+
+    & > * {
+      grid-area: revert;
+    }
+
+    &-content {
+      order: 1;
+      text-align: revert;
+      z-index: 5;
+    }
+
+    &-heading,
+    &-info {
+      margin-inline: revert;
+    }
+
+    &-img-container {
+      order: 2;
+      justify-self: end;
+    }
+
+    &-img {
+      max-height: 38rem;
+    }
+  }
+}
