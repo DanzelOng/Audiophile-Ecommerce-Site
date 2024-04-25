@@ -91,5 +91,9 @@
     font-size: var(--fs-700);
     letter-spacing: 1px;
     padding-block: 1.5rem;
+
+    @include breakpoint.for-tablet-up {
+      padding-block: 3.5rem;
+    }
   }
 }

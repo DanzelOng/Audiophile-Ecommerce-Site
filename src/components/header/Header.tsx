@@ -1,7 +1,15 @@
 import { NavLink } from 'react-router-dom';
+import {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  MouseEvent as ReactMouseEvent,
+} from 'react';
 import { motion } from 'framer-motion';
 import { headerNavigation } from '../../data/data';
 import Hero from '../ui/Hero';
+import Navigation from '../ui/Navigation';
 import audiophileLogo from '/assets/svgs/logo.svg';
 import hamburgerIcon from '/assets/svgs/icon-hamburger.svg';
 import cartIcon from '/assets/svgs/icon-cart.svg';
@@ -10,7 +18,34 @@ type HeaderProps = {
   currentPage: string;
 };
 
+const root = document.getElementById('root') as HTMLDivElement;
+
 function Header({ currentPage }: HeaderProps) {
+  const [openMobileNav, setOpenMobileNav] = useState(false);
+
+  const sectionRef = useRef<HTMLElement>(null);
+
+  const clearOverlay = () => {
+    if (root.hasAttribute('data-overlay')) root.removeAttribute('data-overlay');
+  };
+
+  useEffect(() => {
+    const handleClick = (event: ReactMouseEvent | MouseEvent) => {
+      if (!openMobileNav) return;
+
+      // remove overlay if click is outside of navigation container
+      if (
+        sectionRef.current &&
+        !sectionRef.current.contains(event.target as Node)
+      ) {
+        root.removeAttribute('data-overlay');
+        setOpenMobileNav(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClick);
+  }, [openMobileNav]);
+
   return (
     <motion.header
       initial={{ backgroundColor: '#191919' }}
@@ -28,14 +63,25 @@ function Header({ currentPage }: HeaderProps) {
         }}
         transition={{ duration: 1.1 }}
       >
-        <section className='header__wrapper'>
+        <section className='header__wrapper' ref={sectionRef}>
           <nav className='header__navigation'>
-            <button className='btn btn--hamburger'>
+            <button
+              className='btn btn--hamburger'
+              onClick={() => {
+                if (root.hasAttribute('data-overlay')) {
+                  root.removeAttribute('data-overlay');
+                  setOpenMobileNav(false);
+                  return;
+                }
+                root.setAttribute('data-overlay', '');
+                setOpenMobileNav(true);
+              }}
+            >
               <svg className='icon'>
                 <use xlinkHref={`${hamburgerIcon}#icon-hamburger`}></use>
               </svg>
             </button>
-            <NavLink to='/'>
+            <NavLink to='/' onClick={clearOverlay}>
               <img src={audiophileLogo} alt='Audiophile logo' />
             </NavLink>
             <ul role='list' className='primary-navigation'>
@@ -45,12 +91,21 @@ function Header({ currentPage }: HeaderProps) {
                 </li>
               ))}
             </ul>
-            <NavLink className='link--cart' to='/checkout'>
+            <NavLink
+              className='link--cart'
+              to='/checkout'
+              onClick={clearOverlay}
+            >
               <svg className='icon'>
                 <use xlinkHref={`${cartIcon}#icon-cart`}></use>
               </svg>
             </NavLink>
           </nav>
+          <Navigation
+            dataAttrName='navigation-mode'
+            dataAttrValue='mobile-nav'
+            ariaHiddenStatus={openMobileNav}
+          />
           {currentPage !== '/' && (
             <motion.h3
               key={currentPage}
@@ -68,4 +123,5 @@ function Header({ currentPage }: HeaderProps) {
     </motion.header>
   );
 }
+
 export default Header;
