@@ -3,7 +3,7 @@ import Main from '../layout/Main';
 
 function Earphones() {
   return (
-    <Main>
+    <Main className='pt-10'>
       Earphones
       <Outlet />
     </Main>
