@@ -1,0 +1,180 @@
+@use '../utils/breakpoints' as breakpoint;
+
+.zx9-speaker {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  gap: 2.5rem;
+  background-color: hsl(var(--clr-medium-orange));
+  color: hsl(var(--clr-white-1));
+  border-radius: 0.5rem;
+  margin-bottom: 1.6rem;
+  padding-block: 3.3rem;
+  padding-inline: 1rem;
+  isolation: isolate;
+  overflow-y: hidden;
+
+  &__img-container {
+    display: flex;
+    justify-content: center;
+
+    picture {
+      max-width: 45%;
+
+      @include breakpoint.for-tablet-up {
+        max-width: 30%;
+      }
+
+      @include breakpoint.for-desktop-up {
+        max-width: 70%;
+      }
+    }
+  }
+
+  &__blob {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+  }
+
+  &__heading {
+    font-size: var(--fs-700);
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  &__info {
+    font-size: var(--fs-400);
+    font-weight: var(--fw-300);
+    text-align: center;
+    line-height: 1.6;
+    max-width: 35ch;
+  }
+
+  @include breakpoint.for-desktop-up {
+    padding-top: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+
+    &__content {
+      align-items: flex-start;
+      align-self: center;
+    }
+
+    &__heading {
+      max-width: 10ch;
+    }
+
+    &__info {
+      text-align: revert;
+    }
+
+    &__img-container {
+      position: relative;
+      top: 3.8rem;
+    }
+
+    &__blob {
+      top: 0;
+      width: 80%;
+      left: -15%;
+    }
+  }
+}
+
+.zx7-speaker {
+  width: fit-content;
+  padding-bottom: 1.6rem;
+  display: grid;
+  border-radius: 0.5rem;
+  overflow-x: hidden;
+
+  & > * {
+    grid-area: 1 / 1;
+  }
+
+  &__img-container {
+    border-radius: 0.5rem;
+    overflow-x: hidden;
+  }
+
+  &__content {
+    text-transform: uppercase;
+    padding-left: 2rem;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__heading {
+    font-size: var(--fs-700);
+    letter-spacing: 0.7px;
+  }
+
+  @include breakpoint.for-tablet-up {
+    padding-bottom: 2rem;
+
+    &__content {
+      padding-left: 5rem;
+    }
+  }
+
+  @include breakpoint.for-tablet-and-below {
+    margin-inline: auto;
+  }
+}
+
+.yx1-earphones {
+  padding-bottom: 5rem;
+  display: grid;
+  gap: 1.2rem;
+
+  &__img-container {
+    border-radius: 0.5rem;
+    overflow-x: hidden;
+    width: fit-content;
+  }
+
+  &__content {
+    border-radius: 0.5rem;
+    padding-inline: 1.3rem;
+    padding-block: 2.3rem;
+    background-color: hsl(var(--clr-white-2));
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  &__heading {
+    font-size: var(--fs-700);
+    letter-spacing: 0.7px;
+  }
+
+  @include breakpoint.for-tablet-up {
+    padding-bottom: 7rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    position: relative;
+    left: 3rem;
+
+    &__content {
+      padding-inline: 2.6rem;
+      justify-content: center;
+    }
+  }
+
+  @include breakpoint.for-desktop-up {
+    padding-bottom: 10rem;
+    gap: 1.5rem;
+    position: static;
+  }
+}

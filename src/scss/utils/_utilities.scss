@@ -1,3 +1,5 @@
+@use '../utils/breakpoints' as breakpoint;
+
 .container {
   width: min(100% - 3rem, 69.375rem);
   margin-inline: auto;
@@ -40,14 +42,52 @@
   fill: var(--clr-medium-orange);
 }
 
+.btn--contrast,
+.btn--transparent {
+  transition: all 0.15s;
+}
+
 .btn--contrast {
+  font-weight: var(--fw-500);
+  background-color: hsl(var(--clr-black-1));
+  color: hsl(var(--clr-white-1));
+}
+
+.btn--contrast:hover {
+  background-color: hsl(var(--clr-gray-3));
 }
 
 .btn--transparent {
+  font-weight: var(--fw-700);
+  color: hsl(var(--clr-black-1));
+  border: 1px solid hsl(var(--clr-black-1));
+  box-shadow: -1px -1px 1px hsl(var(--clr-black-1) / 0.25);
+}
+
+.btn--transparent:hover {
+  background-color: hsl(var(--clr-black-1));
+  color: hsl(var(--clr-white-1));
+  box-shadow: revert;
+}
+
+.btn--hamburger {
+  fill: var(--clr-white);
+}
+
+.btn--hamburger:hover {
+  fill: var(--clr-medium-orange);
 }
 
 .align-center {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.pt-10 {
+  padding-top: 9.25rem;
+
+  @include breakpoint.for-tablet-up {
+    padding-top: 13.25rem;
+  }
 }
