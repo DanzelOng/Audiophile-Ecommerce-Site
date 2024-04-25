@@ -1,0 +1,67 @@
+@use '../../utils/breakpoints' as breakpoint;
+
+.audio-gear {
+  padding-bottom: 5rem;
+  display: grid;
+  align-items: center;
+  gap: 2rem;
+
+  &__img-container {
+    border-radius: 0.5rem;
+    overflow-x: hidden;
+  }
+
+  &__content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &__heading {
+    font-size: var(--fs-900);
+    text-transform: uppercase;
+    max-width: 20ch;
+
+    span {
+      color: hsl(var(--clr-medium-orange));
+    }
+  }
+
+  &__info {
+    font-size: var(--fs-400);
+    font-weight: var(--fw-600);
+    color: hsl(var(--clr-black-1) / 0.55);
+    line-height: 1.6;
+  }
+
+  @include breakpoint.for-tablet-up {
+    padding-bottom: 8.5rem;
+
+    &__info {
+      max-width: 85%;
+    }
+  }
+
+  @include breakpoint.for-desktop-up {
+    padding-bottom: 10rem;
+    grid-auto-flow: column;
+    place-items: center;
+    gap: 6rem;
+
+    &__heading {
+      max-width: 15ch;
+    }
+
+    &__content {
+      text-align: revert;
+      align-items: revert;
+      order: 1;
+    }
+
+    &__img-container {
+      order: 2;
+    }
+  }
+}
