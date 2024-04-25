@@ -1,0 +1,152 @@
+@use '../../utils/breakpoints' as breakpoint;
+
+.footer {
+  position: relative;
+  background-color: hsl(var(--clr-black-3));
+  padding-block: 2.6rem;
+
+  &__wrapper {
+    display: grid;
+    gap: 2.5rem;
+
+    & > * {
+      justify-self: center;
+    }
+
+    &::before {
+      content: '';
+      height: 0.25rem;
+      width: 6.25rem;
+      background-color: hsl(var(--clr-medium-orange));
+      position: absolute;
+      top: 0;
+
+      @include breakpoint.for-mobile-only {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    @include breakpoint.for-tablet-up {
+      grid-template-areas:
+        'area1 area2'
+        'area3 area4'
+        'area5 area6';
+    }
+  }
+
+  &__navigation {
+    font-size: var(--fs-300);
+    color: hsl(var(--clr-white-1));
+    text-transform: uppercase;
+
+    li {
+      letter-spacing: 0.7px;
+    }
+  }
+
+  &__page-links {
+    font-weight: var(--fw-600);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.3rem;
+
+    & > *:hover {
+      color: hsl(var(--clr-medium-orange));
+    }
+  }
+
+  &__company-description,
+  &__copyright {
+    color: hsl(var(--clr-white-1) / 0.67);
+    font-size: var(--fs-400);
+  }
+
+  &__company-description {
+    text-align: center;
+    font-weight: var(--fw-300);
+    line-height: 1.7;
+    max-width: 35ch;
+  }
+
+  &__copyright {
+    font-weight: var(--fw-500);
+    color: hsl(var(--clr-white-1) / 0.5);
+  }
+
+  &__social-links {
+    display: flex;
+    gap: 1.2rem;
+
+    .social-icons {
+      aspect-ratio: 1;
+      width: 1.5rem;
+      fill: hsl(var(--clr-white-1));
+      transition: all 0.2s;
+    }
+
+    .social-icons:hover {
+      cursor: pointer;
+      fill: hsl(var(--clr-medium-orange));
+      scale: 1.2;
+    }
+  }
+
+  @include breakpoint.for-tablet-up {
+    padding-block: 4rem;
+
+    &__logo,
+    &__navigation,
+    &__company-description,
+    &__copyright {
+      justify-self: start;
+    }
+
+    &__logo,
+    &__navigation,
+    &__company-description {
+      grid-column: span 2;
+    }
+
+    &__page-links {
+      flex-direction: row;
+      gap: 2rem;
+    }
+
+    &__company-description {
+      max-width: revert;
+      text-align: revert;
+    }
+
+    &__social-links {
+      justify-self: end;
+    }
+  }
+
+  @include breakpoint.for-desktop-up {
+    padding-block: 4.8rem;
+
+    &__logo,
+    &__navigation {
+      grid-column: revert;
+    }
+
+    &__logo {
+      grid-area: area1;
+    }
+
+    &__navigation {
+      grid-area: area2;
+    }
+
+    &__company-description {
+      grid-area: area3;
+    }
+
+    &__social-links {
+      grid-area: area4;
+      align-self: end;
+    }
+  }
+}
