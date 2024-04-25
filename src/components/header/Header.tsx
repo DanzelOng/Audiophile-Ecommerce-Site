@@ -3,7 +3,6 @@ import {
   useState,
   useEffect,
   useRef,
-  useCallback,
   MouseEvent as ReactMouseEvent,
 } from 'react';
 import { motion } from 'framer-motion';
@@ -21,6 +20,11 @@ type HeaderProps = {
 const root = document.getElementById('root') as HTMLDivElement;
 
 function Header({ currentPage }: HeaderProps) {
+  const variants = {
+    initial: { backgroundColor: '#191919' },
+    animate: { backgroundColor: `${currentPage === '/' ? '#191919' : '#000'}` },
+  };
+
   const [openMobileNav, setOpenMobileNav] = useState(false);
 
   const sectionRef = useRef<HTMLElement>(null);
@@ -48,19 +52,17 @@ function Header({ currentPage }: HeaderProps) {
 
   return (
     <motion.header
-      initial={{ backgroundColor: '#191919' }}
-      animate={{
-        backgroundColor: `${currentPage === '/' ? '#191919' : '#000'}`,
-      }}
+      initial='initial'
+      animate='animate'
       transition={{ duration: 1.1 }}
+      variants={variants}
       className='header'
     >
       <motion.section
         className='header__navigation-wrapper'
-        initial={{ backgroundColor: '#191919' }}
-        animate={{
-          backgroundColor: `${currentPage === '/' ? '#191919' : '#000'}`,
-        }}
+        initial='initial'
+        animate='animate'
+        variants={variants}
         transition={{ duration: 1.1 }}
       >
         <section className='header__wrapper' ref={sectionRef}>
