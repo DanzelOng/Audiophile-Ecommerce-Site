@@ -16,7 +16,7 @@ function App() {
   const location = useLocation();
   return (
     <>
-      <Header />
+      <Header currentPage={location.pathname} />
       <Routes location={location} key={location.pathname}>
         <Route index element={<Home />} />
         <Route path='/headphones' element={<Headphones />}>
