@@ -1,0 +1,114 @@
+@use '../../utils/breakpoints' as breakpoint;
+
+.audio-products {
+  display: grid;
+  padding-block: 6.5rem;
+  gap: 5rem;
+
+  // for mobile state
+  &[data-navigation-mode='mobile-nav'] {
+    transform: scaleY(0);
+    transform-origin: top;
+    background-color: hsl(var(--clr-white-1));
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.35em;
+    position: fixed;
+    z-index: 25;
+    left: 0;
+    right: 0;
+    padding-inline: 1rem;
+    padding-bottom: 2rem;
+    transition: all 0.5s;
+
+    .audio-products__speakers {
+      background-color: hsl(var(--clr-white-2));
+    }
+
+    @include breakpoint.for-desktop-up {
+      display: none;
+    }
+  }
+
+  & > * {
+    width: min(100%, 28.125rem);
+    margin-inline: auto;
+    padding-block: 2rem;
+  }
+
+  &__headphones,
+  &__speakers,
+  &__earphones {
+    background-color: hsl(var(--clr-white-2));
+    border-radius: 0.5rem;
+    position: relative;
+  }
+
+  &__image {
+    filter: drop-shadow(0rem 0.3rem 0.5rem hsl(var(--clr-black-1) / 0.01));
+    max-height: 90%;
+    position: absolute;
+    top: -43%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &__content {
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    span {
+      margin-top: 2rem;
+      font-weight: var(--fw-700);
+      font-size: var(--fs-400);
+      letter-spacing: 1px;
+
+      @include breakpoint.for-desktop-up {
+        margin-top: 4rem;
+      }
+    }
+  }
+
+  &__link {
+    font-weight: var(--fw-700);
+    font-size: var(--fs-200);
+    color: hsl(var(--clr-black-1) / 0.6);
+    letter-spacing: 0.8px;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    transition: all 0.15s;
+  }
+
+  &__link:hover {
+    color: hsl(var(--clr-medium-orange));
+  }
+
+  @include breakpoint.for-tablet-up {
+    padding-top: 8rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+
+    &__speakers {
+      background-color: transparent;
+    }
+
+    &:not(&__speakers) &__content {
+      padding-inline: 3rem;
+    }
+  }
+
+  @include breakpoint.for-desktop-up {
+    padding-block: 10rem;
+
+    &__image {
+      max-height: 100%;
+    }
+
+    &__speakers {
+      background-color: hsl(var(--clr-white-2));
+    }
+  }
+}
