@@ -1,4 +1,22 @@
-@forward './globals';
+@forward './globals/';
 @forward './components/';
 @forward './pages/';
 @forward './utils/';
+
+// add overlay
+div[id='root'][data-overlay]::before {
+  content: '';
+  display: block;
+  position: fixed;
+  // overlay entire document
+  z-index: 1000;
+  inset: 0;
+  background-color: hsl(var(--clr-black-1) / 0.4);
+}
+
+// display navigation menu when overlay is applied
+div[id='root'][data-overlay] {
+  .audio-products[data-navigation-mode='mobile-nav'] {
+    transform: scaleY(1);
+  }
+}
