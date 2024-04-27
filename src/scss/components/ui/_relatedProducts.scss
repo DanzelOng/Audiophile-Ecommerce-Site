@@ -1,0 +1,57 @@
+@use '../../utils/breakpoints' as breakpoint;
+
+.related-products {
+  text-transform: uppercase;
+  padding-bottom: 5.5rem;
+
+  &__heading {
+    text-align: center;
+    margin-bottom: 1.6rem;
+  }
+
+  &__heading,
+  &__productHeading {
+    font-size: var(--fs-7);
+  }
+
+  &__links {
+    display: grid;
+    row-gap: 3.5rem;
+
+    & > * {
+      width: min(100%, 28.125rem);
+      margin-inline: auto;
+    }
+
+    @include breakpoint.for-tablet-up {
+      grid-auto-flow: column;
+      column-gap: 0.5rem;
+    }
+
+    @include breakpoint.for-desktop-up {
+      column-gap: 2.5rem;
+    }
+  }
+
+  &__product {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+  }
+
+  &__img {
+    border-radius: 0.5em;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6rem;
+    color: hsl(var(--clr-white-1));
+  }
+
+  &__productHeading {
+    color: hsl(var(--clr-black-1));
+  }
+}
