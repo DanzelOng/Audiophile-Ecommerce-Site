@@ -1,6 +1,8 @@
 @use '../utils/breakpoints' as breakpoint;
 
-.headphone-products {
+.headphones-products,
+.speakers-products,
+.earphones-products {
   padding-top: 3rem;
   padding-bottom: 6.5rem;
 
@@ -8,7 +10,9 @@
     margin-top: 7rem;
   }
 
-  .headphone {
+  .headphones,
+  .speakers,
+  .earphones {
     display: grid;
     color: hsl(var(--clr-white-1));
 
@@ -92,15 +96,25 @@
     padding-top: 7.5rem;
 
     & li:nth-child(2) {
-      .headphone__img-container {
+      .headphones__img-container,
+      .speakers__img-container,
+      .earphones__img-container {
         order: 2;
         justify-self: end;
       }
 
-      .headphone__content {
+      .headphones__content,
+      .speakers__content,
+      .earphones__content {
         order: 1;
         justify-self: start;
       }
     }
+  }
+}
+
+.earphones-products {
+  .earphones__heading {
+    max-width: 19ch;
   }
 }
