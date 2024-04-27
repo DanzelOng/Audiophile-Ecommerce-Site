@@ -3,12 +3,8 @@ import { useEffect } from 'react';
 import Header from './header/Header';
 import Footer from './footer/Footer';
 import Home from '../pages/Home';
-import Headphones from '../pages/Headphones';
-import HeadphoneItem from './headphones/HeadphoneItem';
-import Speakers from '../pages/Speakers';
-import SpeakerItem from './speakers/SpeakerItem';
-import Earphones from '../pages/Earphones';
-import EarphoneItem from './earphones/EarphoneItem';
+import Products from '../pages/Products';
+import ProductItem from './ui/ProductItem';
 import Checkout from '../pages/Checkout';
 import PageNotFound from '../pages/PageNotFound';
 import AudioGearSection from './ui/AudioGearSection';
@@ -27,16 +23,25 @@ function App() {
       <Routes location={location} key={location.pathname}>
         <Route index element={<Home />} />
         <Route path='/headphones'>
-          <Route index element={<Headphones />} />
-          <Route path=':headphoneSlug' element={<HeadphoneItem />} />
+          <Route index element={<Products currentPage={location.pathname} />} />
+          <Route
+            path=':productSlug'
+            element={<ProductItem currentPage={location.pathname} />}
+          />
         </Route>
         <Route path='/speakers'>
-          <Route index element={<Speakers />} />
-          <Route path=':speakerSlug' element={<SpeakerItem />} />
+          <Route index element={<Products currentPage={location.pathname} />} />
+          <Route
+            path=':productSlug'
+            element={<ProductItem currentPage={location.pathname} />}
+          />
         </Route>
         <Route path='/earphones'>
-          <Route index element={<Earphones />} />
-          <Route path=':earphoneSlug' element={<EarphoneItem />} />
+          <Route index element={<Products currentPage={location.pathname} />} />
+          <Route
+            path=':productSlug'
+            element={<ProductItem currentPage={location.pathname} />}
+          />
         </Route>
         <Route path='/checkout' element={<Checkout />} />
         <Route path='*' element={<PageNotFound />} />

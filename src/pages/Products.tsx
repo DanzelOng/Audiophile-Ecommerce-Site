@@ -1,26 +1,21 @@
-import { headphones, speakers, earphones } from '../data/data';
+import { getProducts } from '../data/data';
 import Main from '../layout/Main';
 import Button from '../components/ui/Button';
 import ResponsiveImage from '../components/ui/ResponsiveImage';
 import Navigation from '../components/ui/Navigation';
-
-const getProducts = {
-  '/headphones': headphones,
-  '/speakers': speakers,
-  '/earphones': earphones,
-};
 
 type ProductsProps = {
   currentPage: string;
 };
 
 function Products({ currentPage }: ProductsProps) {
-  const products = getProducts[currentPage as keyof typeof getProducts];
+  const products =
+    getProducts[currentPage.split('/')[1] as keyof typeof getProducts];
   const category = currentPage.slice(1);
   return (
     <Main className='pt-10'>
       <ul
-        className={`${category}-product`}
+        className={`${category}-products`}
         role='list'
         aria-label={`${category} products`}
       >
