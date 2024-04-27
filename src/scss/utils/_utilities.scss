@@ -37,6 +37,10 @@
 
 .link--hamburger {
   fill: var(--clr-white);
+
+  @include breakpoint.for-desktop-up {
+    display: none;
+  }
 }
 
 .link--hamburger:hover {
@@ -70,14 +74,6 @@
   background-color: hsl(var(--clr-black-1));
   color: hsl(var(--clr-white-1));
   box-shadow: revert;
-}
-
-.link--hamburger {
-  fill: var(--clr-white);
-}
-
-.link--hamburger:hover {
-  fill: var(--clr-medium-orange);
 }
 
 .link--navigation {

@@ -48,10 +48,6 @@
     }
 
     @include breakpoint.for-desktop-up {
-      .btn--hamburger {
-        display: none;
-      }
-
       .primary-navigation {
         text-transform: uppercase;
         display: flex;
@@ -88,7 +84,7 @@
     text-transform: uppercase;
     text-align: center;
     font-weight: var(--fw-600);
-    font-size: var(--fs-700);
+    font-size: var(--fs-800);
     letter-spacing: 1px;
     padding-block: 1.5rem;
 
