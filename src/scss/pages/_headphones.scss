@@ -1,0 +1,106 @@
+@use '../utils/breakpoints' as breakpoint;
+
+.headphone-products {
+  padding-top: 3rem;
+  padding-bottom: 6.5rem;
+
+  & > * + * {
+    margin-top: 7rem;
+  }
+
+  .headphone {
+    display: grid;
+    color: hsl(var(--clr-white-1));
+
+    & > * + * {
+      margin-top: 1.5rem;
+    }
+
+    &__img-container {
+      border-radius: 0.5em;
+      overflow-x: hidden;
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      align-items: center;
+    }
+
+    &__subheading,
+    &__heading {
+      text-transform: uppercase;
+    }
+
+    &__subheading {
+      font-size: var(--fs-300);
+      font-weight: var(--fw-500);
+      color: hsl(var(--clr-medium-orange));
+      letter-spacing: 0.5rem;
+    }
+
+    &__heading {
+      font-size: var(--fs-800);
+      color: hsl(var(--clr-black-1));
+      text-align: center;
+      max-width: 10ch;
+    }
+
+    &__description {
+      font-size: var(--fs-400);
+      font-weight: var(--fw-500);
+      color: hsl(var(--clr-black-1) / 0.55);
+      max-width: 35ch;
+      text-align: center;
+      line-height: 1.65;
+
+      @include breakpoint.for-tablet-up {
+        max-width: 51ch;
+      }
+    }
+
+    @include breakpoint.for-desktop-up {
+      grid-template-columns: 1fr 1fr;
+
+      &__img-container {
+        max-width: 85%;
+      }
+
+      &__content {
+        align-items: flex-start;
+        align-self: center;
+        justify-self: end;
+      }
+
+      &__heading,
+      &__description {
+        text-align: left;
+      }
+
+      &__description {
+        max-width: 47ch;
+      }
+    }
+  }
+
+  @include breakpoint.for-tablet-up {
+    padding-top: 4.5rem;
+  }
+
+  @include breakpoint.for-desktop-up {
+    padding-top: 7.5rem;
+
+    & li:nth-child(2) {
+      .headphone__img-container {
+        order: 2;
+        justify-self: end;
+      }
+
+      .headphone__content {
+        order: 1;
+        justify-self: start;
+      }
+    }
+  }
+}
