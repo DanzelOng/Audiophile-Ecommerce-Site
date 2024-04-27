@@ -628,15 +628,15 @@ export const speakers: Products[] = [
     ],
     images: [
       {
-        path: 'assets/product-zx9-speaker/mobile/image-category-page-preview.jpg',
+        path: '/assets/product-zx9-speaker/mobile/image-product.jpg',
         width: mobileBp,
       },
       {
-        path: 'assets/product-zx9-speaker/tablet/image-category-page-preview.jpg',
+        path: '/assets/product-zx9-speaker/tablet/image-product.jpg',
         width: tabletBp,
       },
       {
-        path: 'assets/product-zx9-speaker/desktop/image-category-page-preview.jpg',
+        path: '/assets/product-zx9-speaker/desktop/image-product.jpg',
       },
     ],
     preview: [
@@ -793,15 +793,15 @@ export const speakers: Products[] = [
     ],
     images: [
       {
-        path: 'assets/product-zx7-speaker/mobile/image-category-page-preview.jpg',
+        path: '/assets/product-zx7-speaker/mobile/image-product.jpg',
         width: mobileBp,
       },
       {
-        path: 'assets/proYX1 Wireless Earphones/image-category-page-preview.jpg',
+        path: '/assets/product-zx7-speaker/tablet/image-product.jpg',
         width: tabletBp,
       },
       {
-        path: 'assets/product-zx7-speaker/desktop/image-category-page-preview.jpg',
+        path: '/assets/product-zx7-speaker/desktop/image-product.jpg',
       },
     ],
     preview: [
@@ -961,15 +961,15 @@ export const earphones: Products[] = [
     ],
     images: [
       {
-        path: 'assets/product-yx1-earphones/mobile/image-category-page-preview.jpg',
+        path: '/assets/product-yx1-earphones/mobile/image-product.jpg',
         width: mobileBp,
       },
       {
-        path: 'assets/product-yx1-earphones/tablet/image-category-page-preview.jpg',
+        path: '/assets/product-yx1-earphones/tablet/image-product.jpg',
         width: tabletBp,
       },
       {
-        path: 'assets/product-yx1-earphones/desktop/image-category-page-preview.jpg',
+        path: '/assets/product-yx1-earphones/desktop/image-product.jpg',
       },
     ],
     preview: [
@@ -1095,7 +1095,7 @@ export const earphones: Products[] = [
 ];
 
 export const getProducts = {
-  'headphones': headphones,
-  'speakers': speakers,
-  'earphones': earphones,
+  headphones,
+  speakers,
+  earphones,
 };
