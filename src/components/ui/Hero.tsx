@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { heroImgs } from '../../data/data';
 import ResponsiveImage from './ResponsiveImage';
@@ -31,8 +30,8 @@ function Hero() {
           Experience natural, lifelike audio and exceptional build quality made
           for the passionate music enthusiast.
         </p>
-        <Button type='regular'>
-          <Link to='/headphones/xx99-mark-II-headphones'>See Product</Link>
+        <Button type='regular' href='/headphones/xx99-mark-two-headphones'>
+          See Product
         </Button>
       </motion.div>
     </section>

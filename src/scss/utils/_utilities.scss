@@ -5,83 +5,108 @@
   margin-inline: auto;
 }
 
-.btn {
+.link {
   border: none;
   background: none;
-  text-transform: uppercase;
+  display: inline-block;
   font-size: var(--fs-200);
   letter-spacing: 1px;
 }
 
-.btn:hover {
+.link:hover {
   cursor: pointer;
 }
 
-.btn--regular,
-.btn--contrast,
-.btn--transparent {
+.link--regular,
+.link--contrast,
+.link--transparent {
   padding: 1rem 1.6rem;
+  text-transform: uppercase;
 }
 
-.btn--regular {
+.link--regular {
   font-weight: var(--fw-600);
   background-color: hsl(var(--clr-medium-orange));
   color: hsl(var(--clr-white));
   transition: all 0.15s;
 }
 
-.btn--regular:hover {
+.link--regular:hover {
   background-color: hsl(var(--clr-light-orange));
 }
 
-.btn--hamburger {
+.link--hamburger {
   fill: var(--clr-white);
 }
 
-.btn--hamburger:hover {
+.link--hamburger:hover {
   fill: var(--clr-medium-orange);
 }
 
-.btn--contrast,
-.btn--transparent {
+.link--contrast,
+.link--transparent,
+.link--navigation {
   transition: all 0.15s;
 }
 
-.btn--contrast {
+.link--contrast {
   font-weight: var(--fw-500);
   background-color: hsl(var(--clr-black-1));
   color: hsl(var(--clr-white-1));
 }
 
-.btn--contrast:hover {
+.link--contrast:hover {
   background-color: hsl(var(--clr-gray-3));
 }
 
-.btn--transparent {
+.link--transparent {
   font-weight: var(--fw-700);
   color: hsl(var(--clr-black-1));
   border: 1px solid hsl(var(--clr-black-1));
   box-shadow: -1px -1px 1px hsl(var(--clr-black-1) / 0.25);
 }
 
-.btn--transparent:hover {
+.link--transparent:hover {
   background-color: hsl(var(--clr-black-1));
   color: hsl(var(--clr-white-1));
   box-shadow: revert;
 }
 
-.btn--hamburger {
+.link--hamburger {
   fill: var(--clr-white);
 }
 
-.btn--hamburger:hover {
+.link--hamburger:hover {
   fill: var(--clr-medium-orange);
+}
+
+.link--navigation {
+  margin-block: 1.3rem;
+  font-size: var(--fs-400);
+  font-weight: var(--fw-600);
+  color: hsl(var(--clr-black-1) / 0.5);
+
+  @include breakpoint.for-tablet-up {
+    margin-block: 2rem;
+  }
+
+  @include breakpoint.for-desktop-up {
+    margin-block: 4rem;
+  }
+}
+
+.link--navigation:hover {
+  color: hsl(var(--clr-black-1));
 }
 
 .align-center {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.mt-5 {
+  margin-top: 3.875rem;
 }
 
 .pt-10 {

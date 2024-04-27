@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { YX1Earphone, ZX7Speaker, ZX9Speaker } from '../data/data';
 import patternCircleSvg from '/assets/svgs/pattern-circles.svg';
 import Main from '../layout/Main';
@@ -9,10 +8,7 @@ import ResponsiveImage from '../components/ui/ResponsiveImage';
 function Home() {
   return (
     <Main>
-      <Navigation
-        dataAttrName='navigation-mode'
-        dataAttrValue='desktop'
-      />
+      <Navigation dataAttrName='navigation-mode' dataAttrValue='desktop' />
       <section className='zx9-speaker'>
         <img
           className='zx9-speaker__blob'
@@ -32,9 +28,9 @@ function Home() {
             Upgrade to premium speakers that are phenomenally built to deliver
             truly remarkable sound.
           </p>
-          <Link to='/speakers/zx9-speaker'>
-            <Button type='contrast'>See Product</Button>
-          </Link>
+          <Button type='contrast' href='/speakers/zx9-speaker'>
+            See Product
+          </Button>
         </div>
       </section>
       <section className='zx7-speaker'>
@@ -47,9 +43,9 @@ function Home() {
         </div>
         <div className='zx7-speaker__content'>
           <h3 className='zx7-speaker__heading'>ZX7 Speaker</h3>
-          <Link to='/speakers/zx7-speaker'>
-            <Button type='transparent'>See Product</Button>
-          </Link>
+          <Button type='transparent' href='/speakers/zx7-speaker'>
+            See Product
+          </Button>
         </div>
       </section>
       <section className='yx1-earphones'>
@@ -62,9 +58,9 @@ function Home() {
         </div>
         <div className='yx1-earphones__content'>
           <h3 className='yx1-earphones__heading'>YX1 Earphones</h3>
-          <Link to='/earphones/yx1-earphones'>
-            <Button type='transparent'>See Product</Button>
-          </Link>
+          <Button type='transparent' href='/earphones/yx1-earphones'>
+            See Product
+          </Button>
         </div>
       </section>
     </Main>

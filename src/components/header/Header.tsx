@@ -17,6 +17,16 @@ type HeaderProps = {
   currentPage: string;
 };
 
+type PageLabels = {
+  [key: string]: boolean;
+};
+
+const pageLabels: PageLabels = {
+  '/speakers': true,
+  '/headphones': true,
+  '/earphones': true,
+};
+
 const root = document.getElementById('root') as HTMLDivElement;
 
 function Header({ currentPage }: HeaderProps) {
@@ -67,8 +77,8 @@ function Header({ currentPage }: HeaderProps) {
       >
         <section className='header__wrapper' ref={sectionRef}>
           <nav className='header__navigation'>
-            <button
-              className='btn btn--hamburger'
+            <a
+              className='link link--hamburger'
               onClick={() => {
                 if (root.hasAttribute('data-overlay')) {
                   root.removeAttribute('data-overlay');
@@ -82,7 +92,7 @@ function Header({ currentPage }: HeaderProps) {
               <svg className='icon'>
                 <use xlinkHref={`${hamburgerIcon}#icon-hamburger`}></use>
               </svg>
-            </button>
+            </a>
             <NavLink to='/' onClick={clearOverlay}>
               <img src={audiophileLogo} alt='Audiophile logo' />
             </NavLink>
@@ -108,7 +118,7 @@ function Header({ currentPage }: HeaderProps) {
             dataAttrValue='mobile-nav'
             ariaHiddenStatus={openMobileNav}
           />
-          {currentPage !== '/' && (
+          {pageLabels[currentPage] && (
             <motion.h3
               key={currentPage}
               initial={{ opacity: 0, scale: 0.5 }}
