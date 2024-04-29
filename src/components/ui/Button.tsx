@@ -10,11 +10,11 @@ type BtnProps = {
 
 function Button({ children, type, href, onClick }: BtnProps) {
   return href ? (
-    <Link to={href} className={`link link--${type}`}>
+    <Link to={href} className={`link link--${type}`} onClick={onClick}>
       {children}
     </Link>
   ) : (
-    <button className={`link link--${type}`} onClick={onClick}>
+    <button className={`btn btn--${type}`} onClick={onClick}>
       {children}
     </button>
   );

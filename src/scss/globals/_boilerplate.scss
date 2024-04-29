@@ -45,6 +45,16 @@ ol[role='list'] {
   list-style: none;
 }
 
+button {
+  border: none;
+  background: none;
+  font: inherit;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

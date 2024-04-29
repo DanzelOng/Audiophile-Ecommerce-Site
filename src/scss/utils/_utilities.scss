@@ -17,22 +17,38 @@
   cursor: pointer;
 }
 
+.btn--regular {
+  font-size: var(--fs-300);
+}
+
+.btn--regular,
 .link--regular,
 .link--contrast,
-.link--transparent {
+.link--transparent,
+.link--checkout {
   padding: 1rem 1.6rem;
   text-transform: uppercase;
 }
 
-.link--regular {
+.btn--regular,
+.link--regular,
+.link--checkout {
   font-weight: var(--fw-600);
   background-color: hsl(var(--clr-medium-orange));
   color: hsl(var(--clr-white));
   transition: all 0.15s;
 }
 
-.link--regular:hover {
+.btn--regular:hover,
+.link--regular:hover,
+.link--checkout:hover {
   background-color: hsl(var(--clr-light-orange));
+}
+
+.link--checkout {
+  width: 100%;
+  text-align: center;
+  font-weight: var(--fw-600);
 }
 
 .link--hamburger {
@@ -112,3 +128,4 @@
     padding-top: 13.25rem;
   }
 }
+
