@@ -5,6 +5,7 @@ import {
   useRef,
   MouseEvent as ReactMouseEvent,
 } from 'react';
+import { Toaster } from 'react-hot-toast';
 import { motion, AnimatePresence } from 'framer-motion';
 import { headerNavigation } from '../../data/data';
 import Cart from '../ui/Cart';
@@ -151,6 +152,14 @@ function Header({ currentPage }: HeaderProps) {
               {currentPage.slice(1)}
             </motion.h3>
           )}
+          <Toaster
+            position='top-left'
+            containerStyle={{
+              top: 70,
+              left: 0,
+              position: 'absolute',
+            }}
+          />
         </section>
       </motion.section>
       {currentPage === '/' && <Hero />}

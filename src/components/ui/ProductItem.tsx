@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 import { useState } from 'react';
 import { getProducts } from '../../data/data';
 import useCart from '../../context/CartContext';
@@ -31,6 +32,13 @@ function ProductItem({ currentPage }: ProductsProps) {
   const decrementClick = () => {
     if (qty === 1) return;
     setQty((qty) => qty - 1);
+  };
+
+  const onItemAdd = () => {
+    toast.success(`Added ${product.name} to cart`, {
+      className: 'react-toast',
+      id: 'product',
+    });
   };
 
   return (
@@ -74,6 +82,7 @@ function ProductItem({ currentPage }: ProductsProps) {
                 type='regular'
                 onClick={() => {
                   incrementItem(qty, product.cartName);
+                  onItemAdd();
                 }}
               >
                 Add To Cart

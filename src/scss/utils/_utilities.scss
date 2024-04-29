@@ -129,3 +129,13 @@
     padding-top: 13.25rem;
   }
 }
+
+// styles for toast
+.relative {
+  position: relative;
+}
+
+.react-toast {
+  font-weight: var(--fw-600);
+  font-size: var(--fs-400);
+}
