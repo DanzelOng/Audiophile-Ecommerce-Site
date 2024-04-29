@@ -88,10 +88,11 @@ export type RelatedProductImgs = {
   images: ImgAttribute[];
 };
 
-type Products = {
+type Product = {
   id: number;
   slug: string;
   name: string;
+  cartName: string;
   new: boolean;
   price: number;
   description: string;
@@ -103,11 +104,12 @@ type Products = {
   other: RelatedProductImgs[];
 };
 
-export const headphones: Products[] = [
+export const headphones: Product[] = [
   {
     id: 1,
     slug: 'xx99-mark-two-headphones',
     name: 'XX99 Mark II Headphones',
+    cartName: 'XX99 MK II',
     new: true,
     price: 2999,
     description:
@@ -273,6 +275,7 @@ export const headphones: Products[] = [
     id: 2,
     slug: 'xx99-mark-one-headphones',
     name: 'XX99 Mark I Headphones',
+    cartName: 'XX99 MK I',
     new: false,
     price: 1750,
     description:
@@ -434,6 +437,7 @@ export const headphones: Products[] = [
     id: 3,
     slug: 'xx59-headphones',
     name: 'XX59 Headphones',
+    cartName: 'XX59',
     new: false,
     price: 899,
     description:
@@ -593,11 +597,12 @@ export const headphones: Products[] = [
   },
 ];
 
-export const speakers: Products[] = [
+export const speakers: Product[] = [
   {
     id: 1,
     slug: 'zx9-speaker',
     name: 'ZX9 Speaker',
+    cartName: 'ZX9',
     new: true,
     price: 4500,
     description:
@@ -763,6 +768,7 @@ export const speakers: Products[] = [
     id: 2,
     slug: 'zx7-speaker',
     name: 'ZX7 Speaker',
+    cartName: 'ZX7',
     new: false,
     price: 3500,
     description:
@@ -822,7 +828,7 @@ export const speakers: Products[] = [
         attribute: 'first',
         images: [
           {
-            path: '/assets/product-7-speaker/mobile/image-gallery-1.jpg',
+            path: '/assets/product-zx7-speaker/mobile/image-gallery-1.jpg',
             width: mobileBp,
           },
           {
@@ -926,11 +932,12 @@ export const speakers: Products[] = [
   },
 ];
 
-export const earphones: Products[] = [
+export const earphones: Product[] = [
   {
     id: 1,
     slug: 'yx1-wireless-earphones',
     name: 'YX1 Wireless Earphones',
+    cartName: 'YX1',
     new: true,
     price: 599,
     description:

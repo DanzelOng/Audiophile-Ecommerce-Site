@@ -58,7 +58,7 @@ function Home() {
         </div>
         <div className='yx1-earphones__content'>
           <h3 className='yx1-earphones__heading'>YX1 Earphones</h3>
-          <Button type='transparent' href='/earphones/yx1-earphones'>
+          <Button type='transparent' href='/earphones/yx1-wireless-earphones'>
             See Product
           </Button>
         </div>
