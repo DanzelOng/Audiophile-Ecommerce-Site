@@ -51,7 +51,7 @@ function Cart({ setOpenCart }: CartProps) {
                 clearCart();
               }}
             >
-              Remove all
+              <span className='cart__removeAll'>Remove all</span>
             </button>
           </div>
           <ul className='cart__items' role='list' aria-label='Cart Items'>
@@ -87,12 +87,13 @@ function Cart({ setOpenCart }: CartProps) {
           <div className='cart__totalPriceSummary'>
             <span className='cart__totalPriceText'>Total</span>
             <span className='cart__totalPrice'>
+              {/* VAT is calculated as 20% of the product total */}
               {convertToSGD(
                 cart.reduce(
                   (acc, item) =>
                     item.qty !== 0 ? acc + item.price * item.qty : acc,
                   0
-                )
+                ) * 1.2
               )}
             </span>
           </div>

@@ -5,13 +5,16 @@ import {
   useRef,
   MouseEvent as ReactMouseEvent,
 } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { headerNavigation } from '../../data/data';
+import Cart from '../ui/Cart';
 import Hero from '../ui/Hero';
+import Button from '../ui/Button';
 import Navigation from '../ui/Navigation';
 import audiophileLogo from '/assets/svgs/logo.svg';
 import hamburgerIcon from '/assets/svgs/icon-hamburger.svg';
 import cartIcon from '/assets/svgs/icon-cart.svg';
+import checkOverlays from '../../utils/overlays';
 
 type HeaderProps = {
   currentPage: string;
@@ -36,24 +39,22 @@ function Header({ currentPage }: HeaderProps) {
   };
 
   const [openMobileNav, setOpenMobileNav] = useState(false);
-
+  const [openCart, setOpenCart] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-
-  const clearOverlay = () => {
-    if (root.hasAttribute('data-overlay')) root.removeAttribute('data-overlay');
-  };
 
   useEffect(() => {
     const handleClick = (event: ReactMouseEvent | MouseEvent) => {
-      if (!openMobileNav) return;
-
-      // remove overlay if click is outside of navigation container
+      // remove data overlay if click is outside of navigation container
       if (
         sectionRef.current &&
         !sectionRef.current.contains(event.target as Node)
       ) {
         root.removeAttribute('data-overlay');
         setOpenMobileNav(false);
+        if (root.hasAttribute('cart-overlay')) {
+          root.removeAttribute('cart-overlay');
+          setOpenCart(false);
+        }
       }
     };
 
@@ -80,12 +81,13 @@ function Header({ currentPage }: HeaderProps) {
             <a
               className='link link--hamburger'
               onClick={() => {
-                if (root.hasAttribute('data-overlay')) {
-                  root.removeAttribute('data-overlay');
-                  setOpenMobileNav(false);
-                  return;
+                if (root.hasAttribute('cart-overlay')) {
+                  root.removeAttribute('cart-overlay');
+                  setOpenCart(false);
                 }
-                root.setAttribute('data-overlay', '');
+                root.hasAttribute('data-overlay')
+                  ? root.removeAttribute('data-overlay')
+                  : root.setAttribute('data-overlay', '');
                 setOpenMobileNav(true);
               }}
             >
@@ -93,26 +95,46 @@ function Header({ currentPage }: HeaderProps) {
                 <use xlinkHref={`${hamburgerIcon}#icon-hamburger`}></use>
               </svg>
             </a>
-            <NavLink to='/' onClick={clearOverlay}>
+            <NavLink
+              to='/'
+              onClick={() => {
+                checkOverlays(root, setOpenCart);
+              }}
+            >
               <img src={audiophileLogo} alt='Audiophile logo' />
             </NavLink>
             <ul role='list' className='primary-navigation'>
               {headerNavigation.map((page, index) => (
-                <li key={index}>
+                <li
+                  key={index}
+                  onClick={() => {
+                    checkOverlays(root, setOpenCart);
+                  }}
+                >
                   <NavLink to={page.url}>{page.category}</NavLink>
                 </li>
               ))}
             </ul>
-            <NavLink
-              className='link--cart'
-              to='/checkout'
-              onClick={clearOverlay}
+            <Button
+              type='cart'
+              onClick={() => {
+                if (root.hasAttribute('data-overlay')) {
+                  root.removeAttribute('data-overlay');
+                }
+                root.hasAttribute('cart-overlay')
+                  ? root.removeAttribute('cart-overlay')
+                  : root.setAttribute('cart-overlay', '');
+                setOpenCart((mode) => !mode);
+              }}
             >
               <svg className='icon'>
                 <use xlinkHref={`${cartIcon}#icon-cart`}></use>
               </svg>
-            </NavLink>
+            </Button>
           </nav>
+          <AnimatePresence>
+            {openCart && <Cart setOpenCart={setOpenCart} />}
+          </AnimatePresence>
           <Navigation
             dataAttrName='navigation-mode'
             dataAttrValue='mobile-nav'
