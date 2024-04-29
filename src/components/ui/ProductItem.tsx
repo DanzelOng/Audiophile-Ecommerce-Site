@@ -1,11 +1,13 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { getProducts } from '../../data/data';
+import useCart from '../../context/CartContext';
 import Main from '../../layout/Main';
 import Navigation from '../ui/Navigation';
 import Button from '../ui/Button';
 import ResponsiveImage from '../ui/ResponsiveImage';
 import RelatedProducts from '../ui/RelatedProducts';
+import convertToSGD from '../../utils/convertToSGD';
 
 type ProductsProps = {
   currentPage: string;
@@ -15,6 +17,7 @@ function ProductItem({ currentPage }: ProductsProps) {
   const [qty, setQty] = useState(1);
   const { productSlug } = useParams();
   const navigate = useNavigate();
+  const { incrementItem } = useCart();
 
   let category = currentPage.split('/')[1];
   const products = getProducts[category as keyof typeof getProducts];
@@ -55,11 +58,7 @@ function ProductItem({ currentPage }: ProductsProps) {
               {product.description}
             </p>
             <span className={`${category}-product__price`}>
-              {new Intl.NumberFormat('en-SG', {
-                style: 'currency',
-                currency: 'SGD',
-                minimumFractionDigits: 0,
-              }).format(product.price)}
+              {convertToSGD(product.price)}
             </span>
             <div className={`${category}-product__qtySelection`}>
               <div className={`${category}-product__qtySelection-wrapper`}>
@@ -71,7 +70,14 @@ function ProductItem({ currentPage }: ProductsProps) {
                   +
                 </button>
               </div>
-              <Button type='regular'>Add To Cart</Button>
+              <Button
+                type='regular'
+                onClick={() => {
+                  incrementItem(qty, product.cartName);
+                }}
+              >
+                Add To Cart
+              </Button>
             </div>
           </div>
         </section>
