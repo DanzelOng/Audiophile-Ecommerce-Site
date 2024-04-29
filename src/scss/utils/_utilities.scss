@@ -92,11 +92,12 @@
   box-shadow: revert;
 }
 
-.link--navigation {
+.btn--navigation {
   margin-block: 1.3rem;
   font-size: var(--fs-400);
   font-weight: var(--fw-600);
   color: hsl(var(--clr-black-1) / 0.5);
+  transition: all 0.2s;
 
   @include breakpoint.for-tablet-up {
     margin-block: 2rem;
@@ -107,7 +108,7 @@
   }
 }
 
-.link--navigation:hover {
+.btn--navigation:hover {
   color: hsl(var(--clr-black-1));
 }
 
@@ -128,4 +129,3 @@
     padding-top: 13.25rem;
   }
 }
-
