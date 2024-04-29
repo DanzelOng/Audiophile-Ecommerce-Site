@@ -47,6 +47,7 @@ function Cart({ setOpenCart }: CartProps) {
               )})`}
             </h5>
             <button
+              className='btn'
               onClick={() => {
                 clearCart();
               }}
@@ -72,11 +73,17 @@ function Cart({ setOpenCart }: CartProps) {
                     </span>
                   </div>
                   <div className='cart__itemQtyControls'>
-                    <button onClick={() => decrementItem(product.cartName)}>
+                    <button
+                      className='btn btn--increment'
+                      onClick={() => decrementItem(product.cartName)}
+                    >
                       -
                     </button>
                     <span>{product.qty}</span>
-                    <button onClick={() => incrementItem(1, product.cartName)}>
+                    <button
+                      className='btn btn--decrement'
+                      onClick={() => incrementItem(1, product.cartName)}
+                    >
                       +
                     </button>
                   </div>

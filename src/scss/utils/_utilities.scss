@@ -13,12 +13,24 @@
   letter-spacing: 1px;
 }
 
-.link:hover {
+.link:hover,
+.btn:hover {
   cursor: pointer;
+}
+
+.btn {
+  border: none;
+  background: none;
+  font: inherit;
 }
 
 .btn--regular {
   font-size: var(--fs-300);
+}
+
+.btn--increment,
+.btn--decrement {
+  color: hsl(var(--clr-black-1) / 0.5);
 }
 
 .btn--regular,
@@ -35,7 +47,7 @@
 .link--checkout {
   font-weight: var(--fw-600);
   background-color: hsl(var(--clr-medium-orange));
-  color: hsl(var(--clr-white));
+  color: hsl(var(--clr-white-1));
   transition: all 0.15s;
 }
 
@@ -52,15 +64,9 @@
 }
 
 .link--hamburger {
-  fill: var(--clr-white);
-
   @include breakpoint.for-desktop-up {
     display: none;
   }
-}
-
-.link--hamburger:hover {
-  fill: var(--clr-medium-orange);
 }
 
 .link--contrast,
@@ -138,4 +144,20 @@
 .react-toast {
   font-weight: var(--fw-600);
   font-size: var(--fs-400);
+}
+
+// prevents sticky hover effects on touch devices
+@media (pointer: coarse) {
+  .btn--regular:hover {
+    background-color: hsl(var(--clr-medium-orange)) !important;
+  }
+
+  .btn--increment:hover,
+  .btn--decrement:hover {
+    color: hsl(var(--clr-black-1) / 0.5) !important;
+  }
+
+  .icon:hover {
+    fill: hsl(var(--clr-white-1)) !important;
+  }
 }

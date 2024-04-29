@@ -70,11 +70,11 @@ function ProductItem({ currentPage }: ProductsProps) {
             </span>
             <div className={`${category}-product__qtySelection`}>
               <div className={`${category}-product__qtySelection-wrapper`}>
-                <button className='btn' onClick={decrementClick}>
+                <button className='btn btn--increment' onClick={decrementClick}>
                   -
                 </button>
                 <span>{qty}</span>
-                <button className='btn' onClick={incrementClick}>
+                <button className='btn btn--decrement' onClick={incrementClick}>
                   +
                 </button>
               </div>
