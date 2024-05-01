@@ -18,7 +18,8 @@ body {
 body {
   font-family: var(--ff-manrop);
   background-color: hsl(var(--clr-white));
-  min-height: 100vh;
+  // min-height: 100vh;
+  max-height: 100vh;
 }
 
 input,
