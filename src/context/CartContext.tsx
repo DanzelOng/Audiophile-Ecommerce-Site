@@ -6,7 +6,7 @@ import {
   ReactNode,
 } from 'react';
 
-type CartItem = {
+export type CartItem = {
   cartName: string;
   cartImg: string;
   price: number;
@@ -62,7 +62,7 @@ const initialState: StateType = {
 ////////// Reducer Set Up //////////
 
 // define reducer action types
-export enum REDUCER_ACTION_TYPE {
+const enum REDUCER_ACTION_TYPE {
   INCREMENT,
   DECREMENT,
   CLEAR_CART,
