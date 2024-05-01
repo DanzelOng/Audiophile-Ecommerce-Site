@@ -5,7 +5,8 @@
 
 // add overlay
 div[id='root'][data-overlay]::before,
-div[id='root'][cart-overlay]::before {
+div[id='root'][cart-overlay]::before,
+div[id='root'][order-overlay]::before {
   content: '';
   display: block;
   position: fixed;
