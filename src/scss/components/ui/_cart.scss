@@ -23,9 +23,38 @@
   }
 
   &__empty {
-    text-align: center;
     font-size: var(--fs-600);
     font-weight: var(--fw-500);
+    background-color: hsl(var(--clr-white-1));
+
+    &-text {
+      font-size: var(--fs-500);
+      font-weight: var(--fw-600);
+      color: hsl(var(--clr-black-1));
+      background-color: hsl(var(--clr-medium-orange));
+      line-height: 1.6;
+      padding: 2rem;
+      border-radius: 0.5em;
+
+      & > * + * {
+        margin-top: 1.5rem;
+      }
+
+      @include breakpoint.for-tablet-up {
+        text-align: center;
+      }
+    }
+
+    &-navigation {
+      margin-top: 5rem;
+    }
+
+    &-heading {
+      font-size: var(--fs-800);
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
   }
 
   &__info {
