@@ -13,7 +13,7 @@ function Products({ currentPage }: ProductsProps) {
     getProducts[currentPage.split('/')[1] as keyof typeof getProducts];
   const category = currentPage.slice(1);
   return (
-    <Main className='pt-10'>
+    <Main className='container pt-10'>
       <ul
         className={`${category}-products`}
         role='list'

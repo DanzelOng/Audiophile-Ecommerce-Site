@@ -7,7 +7,7 @@ import ResponsiveImage from '../components/ui/ResponsiveImage';
 
 function Home() {
   return (
-    <Main>
+    <Main className='container'>
       <Navigation dataAttrName='navigation-mode' dataAttrValue='desktop' />
       <section className='zx9-speaker'>
         <img
