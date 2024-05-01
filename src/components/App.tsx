@@ -1,5 +1,5 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { CartProvider } from '../context/CartContext';
 import Header from './header/Header';
 import Footer from './footer/Footer';
@@ -13,6 +13,8 @@ import AudioGearSection from './ui/AudioGearSection';
 function App() {
   const location = useLocation();
 
+  const [orderOpen, setOrderOpen] = useState(false);
+
   // scroll to top of page on route change
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -21,7 +23,11 @@ function App() {
   return (
     <>
       <CartProvider>
-        <Header currentPage={location.pathname} />
+        <Header
+          currentPage={location.pathname}
+          setOrderOpen={setOrderOpen}
+          orderOpen={orderOpen}
+        />
         <Routes location={location} key={location.pathname}>
           <Route index element={<Home />} />
           <Route path='/headphones'>
@@ -54,11 +60,14 @@ function App() {
               element={<ProductItem currentPage={location.pathname} />}
             />
           </Route>
-          <Route path='/checkout' element={<Checkout />} />
+          <Route
+            path='/checkout'
+            element={<Checkout setOrderOpen={setOrderOpen} />}
+          />
           <Route path='*' element={<PageNotFound />} />
         </Routes>
       </CartProvider>
-      <AudioGearSection />
+      {location.pathname !== '/checkout' && <AudioGearSection />}
       <Footer />
     </>
   );

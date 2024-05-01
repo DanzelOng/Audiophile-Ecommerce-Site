@@ -16,9 +16,12 @@ import audiophileLogo from '/assets/svgs/logo.svg';
 import hamburgerIcon from '/assets/svgs/icon-hamburger.svg';
 import cartIcon from '/assets/svgs/icon-cart.svg';
 import checkOverlays from '../../utils/overlays';
+import Order from '../ui/Order';
 
 type HeaderProps = {
   currentPage: string;
+  setOrderOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  orderOpen: boolean;
 };
 
 type PageLabels = {
@@ -33,7 +36,7 @@ const pageLabels: PageLabels = {
 
 const root = document.getElementById('root') as HTMLDivElement;
 
-function Header({ currentPage }: HeaderProps) {
+function Header({ currentPage, setOrderOpen, orderOpen }: HeaderProps) {
   const variants = {
     initial: { backgroundColor: '#191919' },
     animate: { backgroundColor: `${currentPage === '/' ? '#191919' : '#000'}` },
@@ -135,6 +138,7 @@ function Header({ currentPage }: HeaderProps) {
           </nav>
           <AnimatePresence>
             {openCart && <Cart setOpenCart={setOpenCart} />}
+            {orderOpen && <Order setOrderOpen={setOrderOpen} />}
           </AnimatePresence>
           <Navigation
             dataAttrName='navigation-mode'
