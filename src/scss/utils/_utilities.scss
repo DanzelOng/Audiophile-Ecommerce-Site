@@ -91,7 +91,7 @@
   font-weight: var(--fw-600);
 }
 
-.link--hamburger {
+.btn--hamburger {
   @include breakpoint.for-desktop-up {
     display: none;
   }
