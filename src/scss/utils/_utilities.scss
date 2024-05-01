@@ -19,13 +19,30 @@
 }
 
 .btn {
+  display: block;
   border: none;
   background: none;
   font: inherit;
 }
 
+.btn:disabled {
+  cursor: not-allowed;
+  background-color: hsl(var(--clr-gray-3)) !important;
+}
+
 .btn--regular {
   font-size: var(--fs-300);
+}
+
+.btn--viewItems {
+  font-size: var(--fs-100);
+  font-weight: var(--fw-700);
+  color: hsl(var(--clr-black-1) / 0.55);
+  transition: all 0.15s;
+}
+
+.btn--viewItems:hover {
+  color: hsl(var(--clr-black-1) / 0.85);
 }
 
 .btn--increment,
@@ -34,15 +51,18 @@
 }
 
 .btn--regular,
+.btn--checkout,
 .link--regular,
 .link--contrast,
 .link--transparent,
 .link--checkout {
   padding: 1rem 1.6rem;
+  text-align: center;
   text-transform: uppercase;
 }
 
 .btn--regular,
+.btn--checkout,
 .link--regular,
 .link--checkout {
   font-weight: var(--fw-600);
@@ -52,9 +72,17 @@
 }
 
 .btn--regular:hover,
+.btn--checkout:hover,
 .link--regular:hover,
 .link--checkout:hover {
   background-color: hsl(var(--clr-light-orange));
+}
+
+.btn--checkout {
+  font-weight: var(--fw-500);
+  font-size: var(--fs-200);
+  letter-spacing: 0.8px;
+  width: 100%;
 }
 
 .link--checkout {
@@ -99,23 +127,23 @@
 }
 
 .btn--navigation {
-  margin-block: 1.3rem;
+  padding-block: 1.3rem;
   font-size: var(--fs-400);
   font-weight: var(--fw-600);
   color: hsl(var(--clr-black-1) / 0.5);
   transition: all 0.2s;
 
   @include breakpoint.for-tablet-up {
-    margin-block: 2rem;
+    padding-block: 2rem;
   }
 
   @include breakpoint.for-desktop-up {
-    margin-block: 4rem;
+    padding-block: 4rem;
   }
 }
 
 .btn--navigation:hover {
-  color: hsl(var(--clr-black-1));
+  color: hsl(var(--clr-medium-orange));
 }
 
 .align-center {
@@ -134,6 +162,20 @@
   @include breakpoint.for-tablet-up {
     padding-top: 13.25rem;
   }
+}
+
+.bg-white-2 {
+  background-color: hsl(var(--clr-white-2));
+}
+
+.errorMsg {
+  font-size: var(--fs-100);
+  font-weight: var(--fw-600);
+  color: hsl(var(--clr-input-red));
+}
+
+.text-align {
+  text-align: center;
 }
 
 // styles for toast

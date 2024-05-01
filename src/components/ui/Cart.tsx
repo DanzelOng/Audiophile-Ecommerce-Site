@@ -36,7 +36,7 @@ function Cart({ setOpenCart }: CartProps) {
       transition={{ type: 'spring', duration: 0.6 }}
     >
       {isEmpty ? (
-        <p className='cart__empty'>Your cart is currently empty</p>
+        <p className='cart__empty | text-align'>Your cart is currently empty</p>
       ) : (
         <>
           <div className='cart__info'>

@@ -42,7 +42,7 @@ function ProductItem({ currentPage }: ProductsProps) {
   };
 
   return (
-    <Main className='mt-5'>
+    <Main className='container mt-5'>
       <Button type='navigation' onClick={() => navigate(-1)}>
         Go Back &#8592;
       </Button>

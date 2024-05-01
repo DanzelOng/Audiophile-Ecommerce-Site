@@ -65,7 +65,7 @@
     }
 
     @include breakpoint.for-tablet-and-below {
-      .link--cart {
+      .btn--cart {
         margin-left: auto;
       }
     }
@@ -73,7 +73,7 @@
     @include breakpoint.for-mobile-only {
       justify-content: space-between;
 
-      .link--cart {
+      .btn--cart {
         margin-left: revert;
       }
     }
