@@ -8,6 +8,7 @@ import {
 import { Toaster } from 'react-hot-toast';
 import { motion, AnimatePresence } from 'framer-motion';
 import { headerNavigation } from '../../data/data';
+import useCart from '../../context/CartContext';
 import Cart from '../ui/Cart';
 import Hero from '../ui/Hero';
 import Button from '../ui/Button';
@@ -44,6 +45,9 @@ function Header({ currentPage, setOrderOpen, orderOpen }: HeaderProps) {
   const [openMobileNav, setOpenMobileNav] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+
+  const { cart } = useCart();
+  const emptyCart = cart.every((item) => item.qty === 0);
 
   useEffect(() => {
     const handleClick = (event: ReactMouseEvent | MouseEvent) => {
@@ -97,14 +101,16 @@ function Header({ currentPage, setOrderOpen, orderOpen }: HeaderProps) {
               }}
             >
               <svg
-                className={`icon icon--hamburger ${openMobileNav && 'close'}`}
+                className={`icon icon--hamburger ${
+                  openMobileNav ? 'hide' : ''
+                }`}
                 id='mobile-nav-svg'
                 aria-hidden={root.hasAttribute('data-overlay') && openMobileNav}
               >
                 <use xlinkHref={`${headerIcons}#icon-hamburger`}></use>
               </svg>
               <svg
-                className={`icon icon--close ${!openMobileNav ? 'close' : ''}`}
+                className={`icon icon--close ${!openMobileNav ? 'hide' : ''}`}
                 id='mobile-nav-svg'
                 aria-hidden={
                   !root.hasAttribute('data-overlay') && !openMobileNav
@@ -137,6 +143,15 @@ function Header({ currentPage, setOrderOpen, orderOpen }: HeaderProps) {
               type='cart'
               ariaLabel='open cart modal'
               ariaControls='cart'
+              itemsCount={
+                !emptyCart
+                  ? cart.reduce(
+                      (acc, item) => (item.qty !== 0 ? acc + 1 : acc),
+                      0
+                    )
+                  : 0
+              }
+              className={`${!emptyCart ? 'hasItems' : ''}`}
               onClick={() => {
                 if (root.hasAttribute('data-overlay')) {
                   root.removeAttribute('data-overlay');

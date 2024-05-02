@@ -7,6 +7,8 @@ type BtnProps = {
   href?: string;
   ariaLabel?: string;
   ariaControls?: string;
+  className?: string;
+  itemsCount?: number;
   onClick?: () => void;
 };
 
@@ -16,10 +18,16 @@ function Button({
   href,
   ariaLabel,
   ariaControls,
+  itemsCount,
+  className,
   onClick,
 }: BtnProps) {
   return href ? (
-    <Link to={href} className={`link link--${type}`} onClick={onClick}>
+    <Link
+      to={href}
+      className={`link link--${type} ${className}`}
+      onClick={onClick}
+    >
       {children}
     </Link>
   ) : (
@@ -27,7 +35,8 @@ function Button({
       aria-label={ariaLabel}
       aria-controls={ariaControls}
       onClick={onClick}
-      className={`btn btn--${type}`}
+      data-itemsCount={itemsCount}
+      className={`btn btn--${type} ${className}`}
     >
       {children}
     </button>

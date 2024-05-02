@@ -1,5 +1,6 @@
 @use '../utils/breakpoints' as breakpoint;
 
+// container utility class
 .container {
   width: min(100% - 3rem, 69.375rem);
   margin-inline: auto;
@@ -30,11 +31,7 @@
   width: 1.3rem;
 }
 
-.icon--cart:hover {
-  fill: hsl(var(--clr-medium-orange));
-}
-
-.close {
+.hide {
   display: none;
 }
 
@@ -91,6 +88,7 @@
 
 // default button styles
 .btn {
+  position: relative;
   display: block;
   border: none;
   background: none;
@@ -111,6 +109,28 @@
   @include breakpoint.for-desktop-up {
     display: none;
   }
+}
+
+// applied when cart has items
+.btn--cart.hasItems::before {
+  content: attr(data-itemsCount);
+  position: absolute;
+  inset: 0;
+  top: -0.45rem;
+  left: 0.7rem;
+  display: grid;
+  place-items: center;
+  font-size: var(--fs-100);
+  font-weight: var(--fw-500);
+  color: hsl(var(--clr-white-1));
+  background-color: hsl(var(--clr-medium-orange));
+  width: 1rem;
+  aspect-ratio: 1;
+  border-radius: 100vmax;
+}
+
+.btn--cart:hover > .icon--cart {
+  fill: hsl(var(--clr-medium-orange));
 }
 
 .btn--viewItems {
