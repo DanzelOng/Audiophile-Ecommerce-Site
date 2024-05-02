@@ -161,6 +161,7 @@ function Header({ currentPage, setOrderOpen, orderOpen }: HeaderProps) {
             dataAttrName='navigation-mode'
             dataAttrValue='mobile-nav'
             ariaHiddenStatus={openMobileNav}
+            setOpenMobileNav={setOpenMobileNav}
           />
           {pageLabels[currentPage] && (
             <motion.h3

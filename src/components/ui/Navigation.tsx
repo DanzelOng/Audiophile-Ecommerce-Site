@@ -5,6 +5,7 @@ type CategoryNavigatorProps = {
   dataAttrName: string;
   dataAttrValue: string;
   ariaHiddenStatus?: boolean;
+  setOpenMobileNav?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 type DataProps = {
@@ -17,6 +18,7 @@ function Navigation({
   dataAttrName,
   dataAttrValue,
   ariaHiddenStatus,
+  setOpenMobileNav,
 }: CategoryNavigatorProps) {
   const dataProps = {} as DataProps;
   dataProps[`data-${dataAttrName}`] = dataAttrValue;
@@ -42,11 +44,20 @@ function Navigation({
             <Link
               to={category.url}
               className='audio-products__link'
-              onClick={() => {
-                if (root.hasAttribute('data-overlay')) {
-                  root.removeAttribute('data-overlay');
-                }
-              }}
+              onClick={
+                setOpenMobileNav
+                  ? () => {
+                      if (root.hasAttribute('data-overlay')) {
+                        root.removeAttribute('data-overlay');
+                        setOpenMobileNav(false);
+                      }
+                    }
+                  : () => {
+                      if (root.hasAttribute('data-overlay')) {
+                        root.removeAttribute('data-overlay');
+                      }
+                    }
+              }
             >
               Shop
               <img className='audio-products_link-image' src={category.arrow} />
