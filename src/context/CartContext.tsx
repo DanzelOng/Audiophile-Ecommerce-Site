@@ -90,7 +90,7 @@ function reducer(state: StateType, action: ReducerAction): StateType {
     case REDUCER_ACTION_TYPE.DECREMENT: {
       const cart: CartItem[] = state.cart.map((item) => {
         return item.cartName === action.payload!.cartName
-          ? { ...item, qty: (item.qty -= 1) }
+          ? { ...item, qty: item.qty - 1 }
           : item;
       });
 
