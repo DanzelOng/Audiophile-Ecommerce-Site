@@ -82,8 +82,8 @@ function Header({ currentPage, setOrderOpen, orderOpen }: HeaderProps) {
       >
         <section className='header__wrapper' ref={sectionRef}>
           <nav className='header__navigation'>
-            <button
-              className='btn btn--hamburger'
+            <a
+              className='link link--hamburger'
               onClick={() => {
                 if (root.hasAttribute('cart-overlay')) {
                   root.removeAttribute('cart-overlay');
@@ -98,7 +98,7 @@ function Header({ currentPage, setOrderOpen, orderOpen }: HeaderProps) {
               <svg className='icon'>
                 <use xlinkHref={`${hamburgerIcon}#icon-hamburger`}></use>
               </svg>
-            </button>
+            </a>
             <NavLink
               to='/'
               onClick={() => {

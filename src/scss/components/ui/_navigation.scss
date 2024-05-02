@@ -20,12 +20,8 @@
     padding-bottom: 2rem;
     transition: all 0.5s;
 
-    @include breakpoint.for-mobile-only {
-      // max-height: 30rem;
-      // overflow-y: scroll;
-      // scrollbar-width: none;
-      max-height: 100%;
-      overflow: scroll;
+    .audio-products__speakers {
+      background-color: hsl(var(--clr-white-2));
     }
 
     @include breakpoint.for-desktop-up {
