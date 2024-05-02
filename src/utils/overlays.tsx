@@ -1,13 +1,15 @@
 function checkOverlays(
   root: HTMLDivElement,
-  fn: React.Dispatch<React.SetStateAction<boolean>>
+  fn1: React.Dispatch<React.SetStateAction<boolean>>,
+  fn2: React.Dispatch<React.SetStateAction<boolean>>
 ) {
   if (root.hasAttribute('cart-overlay')) {
     root.removeAttribute('cart-overlay');
-    fn(false);
+    fn1(false);
   }
   if (root.hasAttribute('data-overlay')) {
     root.removeAttribute('data-overlay');
+    fn2(false);
   }
 }
 

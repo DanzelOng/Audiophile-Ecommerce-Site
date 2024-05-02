@@ -13,8 +13,7 @@ import Hero from '../ui/Hero';
 import Button from '../ui/Button';
 import Navigation from '../ui/Navigation';
 import audiophileLogo from '/assets/svgs/logo.svg';
-import hamburgerIcon from '/assets/svgs/icon-hamburger.svg';
-import cartIcon from '/assets/svgs/icon-cart.svg';
+import headerIcons from '/assets/svgs/headerIcons.svg';
 import checkOverlays from '../../utils/overlays';
 import Order from '../ui/Order';
 
@@ -82,8 +81,10 @@ function Header({ currentPage, setOrderOpen, orderOpen }: HeaderProps) {
       >
         <section className='header__wrapper' ref={sectionRef}>
           <nav className='header__navigation'>
-            <a
-              className='link link--hamburger'
+            <button
+              aria-label='open mobile navigation'
+              aria-controls='mobile-nav-svg'
+              className='btn btn--hamburger'
               onClick={() => {
                 if (root.hasAttribute('cart-overlay')) {
                   root.removeAttribute('cart-overlay');
@@ -92,17 +93,30 @@ function Header({ currentPage, setOrderOpen, orderOpen }: HeaderProps) {
                 root.hasAttribute('data-overlay')
                   ? root.removeAttribute('data-overlay')
                   : root.setAttribute('data-overlay', '');
-                setOpenMobileNav(true);
+                setOpenMobileNav((state) => !state);
               }}
             >
-              <svg className='icon'>
-                <use xlinkHref={`${hamburgerIcon}#icon-hamburger`}></use>
+              <svg
+                className={`icon icon--hamburger ${openMobileNav && 'close'}`}
+                id='mobile-nav-svg'
+                aria-hidden={root.hasAttribute('data-overlay') && openMobileNav}
+              >
+                <use xlinkHref={`${headerIcons}#icon-hamburger`}></use>
               </svg>
-            </a>
+              <svg
+                className={`icon icon--close ${!openMobileNav ? 'close' : ''}`}
+                id='mobile-nav-svg'
+                aria-hidden={
+                  !root.hasAttribute('data-overlay') && !openMobileNav
+                }
+              >
+                <use xlinkHref={`${headerIcons}#icon-close`}></use>
+              </svg>
+            </button>
             <NavLink
               to='/'
               onClick={() => {
-                checkOverlays(root, setOpenCart);
+                checkOverlays(root, setOpenCart, setOpenMobileNav);
               }}
             >
               <img src={audiophileLogo} alt='Audiophile logo' />
@@ -112,7 +126,7 @@ function Header({ currentPage, setOrderOpen, orderOpen }: HeaderProps) {
                 <li
                   key={index}
                   onClick={() => {
-                    checkOverlays(root, setOpenCart);
+                    checkOverlays(root, setOpenCart, setOpenMobileNav);
                   }}
                 >
                   <NavLink to={page.url}>{page.category}</NavLink>
@@ -121,9 +135,12 @@ function Header({ currentPage, setOrderOpen, orderOpen }: HeaderProps) {
             </ul>
             <Button
               type='cart'
+              ariaLabel='open cart modal'
+              ariaControls='cart'
               onClick={() => {
                 if (root.hasAttribute('data-overlay')) {
                   root.removeAttribute('data-overlay');
+                  setOpenMobileNav(false);
                 }
                 root.hasAttribute('cart-overlay')
                   ? root.removeAttribute('cart-overlay')
@@ -131,8 +148,8 @@ function Header({ currentPage, setOrderOpen, orderOpen }: HeaderProps) {
                 setOpenCart((mode) => !mode);
               }}
             >
-              <svg className='icon'>
-                <use xlinkHref={`${cartIcon}#icon-cart`}></use>
+              <svg className='icon icon--cart' id='cart'>
+                <use xlinkHref={`${headerIcons}#icon-cart`}></use>
               </svg>
             </Button>
           </nav>
