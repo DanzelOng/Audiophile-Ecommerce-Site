@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import toast from 'react-hot-toast';
 import { useState } from 'react';
 import { getProducts } from '../../data/data';
@@ -9,6 +10,7 @@ import Button from '../ui/Button';
 import ResponsiveImage from '../ui/ResponsiveImage';
 import RelatedProducts from '../ui/RelatedProducts';
 import convertToSGD from '../../utils/convertToSGD';
+import capitalize from '../../utils/capitalize';
 
 type ProductsProps = {
   currentPage: string;
@@ -43,6 +45,12 @@ function ProductItem({ currentPage }: ProductsProps) {
 
   return (
     <Main className='container mt-5'>
+      <Helmet>
+        <meta name='description' content={product.description} />
+        <title>{`Audiophile | ${capitalize(category)} - ${
+          product.name
+        } `}</title>
+      </Helmet>
       <Button type='navigation' onClick={() => navigate(-1)}>
         Go Back &#8592;
       </Button>

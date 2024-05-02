@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
 import useCart from '../context/CartContext';
 import Main from '../layout/Main';
@@ -36,6 +37,13 @@ function Checkout({ setOrderOpen }: CheckoutProps) {
 
   return (
     <Main className='mt-5 bg-white-2'>
+      <Helmet>
+        <meta
+          name='description'
+          content='"Complete your purchase safely with our checkout page.'
+        />
+        <title>Audiophile | Checkout</title>
+      </Helmet>
       {isEmpty ? (
         <div className='cart__empty'>
           <div className='container'>

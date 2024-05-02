@@ -1,8 +1,10 @@
-import { getProducts } from '../data/data';
+import { Helmet } from 'react-helmet-async';
+import { getProducts, categoryMetaInfo, TMetaInfo } from '../data/data';
 import Main from '../layout/Main';
 import Button from '../components/ui/Button';
 import ResponsiveImage from '../components/ui/ResponsiveImage';
 import Navigation from '../components/ui/Navigation';
+import capitalize from '../utils/capitalize';
 
 type ProductsProps = {
   currentPage: string;
@@ -14,6 +16,13 @@ function Products({ currentPage }: ProductsProps) {
   const category = currentPage.slice(1);
   return (
     <Main className='container pt-10'>
+      <Helmet>
+        <meta
+          name='description'
+          content={categoryMetaInfo[category as keyof TMetaInfo]}
+        />
+        <title>{`Audiophile | ${capitalize(category)}`}</title>
+      </Helmet>
       <ul
         className={`${category}-products`}
         role='list'

@@ -3,6 +3,17 @@ import headphoneImg from '/assets/navigation-imgs/image-category-thumbnail-headp
 import speakerImg from '/assets/navigation-imgs/image-category-thumbnail-speakers.png';
 import earphoneImg from '/assets/navigation-imgs/image-category-thumbnail-earphones.png';
 
+export const categoryMetaInfo = {
+  headphones:
+    'Dive into pristine sound with our premium headphone range. Discover comfort and clarity for your listening pleasure.',
+  speakers:
+    'Elevate your sound experience with our premium speaker collection. Explore precision-engineered models for every space.',
+  earphones:
+    'Experience clarity on-the-go with our premium earphones. Crafted for comfort and quality sound.',
+};
+
+export type TMetaInfo = typeof categoryMetaInfo;
+
 type NavigationCategory = {
   category: string;
   url: string;

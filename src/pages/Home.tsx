@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { YX1Earphone, ZX7Speaker, ZX9Speaker } from '../data/data';
 import patternCircleSvg from '/assets/svgs/pattern-circles.svg';
 import Main from '../layout/Main';
@@ -8,6 +9,13 @@ import ResponsiveImage from '../components/ui/ResponsiveImage';
 function Home() {
   return (
     <Main className='container'>
+      <Helmet>
+        <meta
+          name='description'
+          content='Discover unparalleled audio quality with our curated selection of premium audio products. Elevate your listening experience with our range of headphones, speakers and earphones.'
+        />
+        <title>Audiophile | Home</title>
+      </Helmet>
       <Navigation dataAttrName='navigation-mode' dataAttrValue='desktop' />
       <section className='zx9-speaker'>
         <img
