@@ -5,6 +5,46 @@
   margin-inline: auto;
 }
 
+// default svg icons styles
+.icon {
+  aspect-ratio: 1;
+  transition: all 0.2s;
+  display: flex;
+  justify-content: center;
+}
+
+// icon modifiers
+.icon--hamburger,
+.icon--close {
+  stroke: hsl(var(--clr-white-1));
+  width: 1.8rem;
+}
+
+.icon--close:hover,
+.icon--hamburger:hover {
+  stroke: hsl(var(--clr-medium-orange));
+}
+
+.icon--cart {
+  fill: hsl(var(--clr-white-1));
+  width: 1.3rem;
+}
+
+.icon--cart:hover {
+  fill: hsl(var(--clr-medium-orange));
+}
+
+.close {
+  display: none;
+}
+
+// default btn and link hover styles
+.link:hover,
+.btn:hover {
+  cursor: pointer;
+}
+
+// default link styles
 .link {
   border: none;
   background: none;
@@ -13,88 +53,11 @@
   letter-spacing: 1px;
 }
 
-.link:hover,
-.btn:hover {
-  cursor: pointer;
-}
-
-.btn {
-  display: block;
-  border: none;
-  background: none;
-  font: inherit;
-}
-
-.btn:disabled {
-  cursor: not-allowed;
-  background-color: hsl(var(--clr-gray-3)) !important;
-}
-
-.btn--regular {
-  font-size: var(--fs-300);
-}
-
-.btn--viewItems {
-  font-size: var(--fs-100);
-  font-weight: var(--fw-700);
-  color: hsl(var(--clr-black-1) / 0.55);
-  transition: all 0.15s;
-}
-
-.btn--viewItems:hover {
-  color: hsl(var(--clr-black-1) / 0.85);
-}
-
-.btn--increment,
-.btn--decrement {
-  color: hsl(var(--clr-black-1) / 0.5);
-}
-
-.btn--regular,
-.btn--checkout,
-.link--regular,
-.link--contrast,
-.link--transparent,
-.link--checkout {
-  padding: 1rem 1.6rem;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.btn--regular,
-.btn--checkout,
-.link--regular,
-.link--checkout {
-  font-weight: var(--fw-600);
-  background-color: hsl(var(--clr-medium-orange));
-  color: hsl(var(--clr-white-1));
-  transition: all 0.15s;
-}
-
-.btn--regular:hover,
-.btn--checkout:hover,
-.link--regular:hover,
-.link--checkout:hover {
-  background-color: hsl(var(--clr-light-orange));
-}
-
-.btn--checkout {
-  font-weight: var(--fw-500);
-  font-size: var(--fs-200);
-  letter-spacing: 0.8px;
-  width: 100%;
-}
-
+// link modifiers
 .link--checkout {
   width: 100%;
   text-align: center;
   font-weight: var(--fw-600);
-}
-
-.btn--hamburger {
-  @include breakpoint.for-desktop-up {
-    display: none;
-  }
 }
 
 .link--contrast,
@@ -126,6 +89,46 @@
   box-shadow: revert;
 }
 
+// default button styles
+.btn {
+  display: block;
+  border: none;
+  background: none;
+  font: inherit;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  background-color: hsl(var(--clr-gray-3)) !important;
+}
+
+// button modifiers
+.btn--regular {
+  font-size: var(--fs-300);
+}
+
+.btn--hamburger {
+  @include breakpoint.for-desktop-up {
+    display: none;
+  }
+}
+
+.btn--viewItems {
+  font-size: var(--fs-100);
+  font-weight: var(--fw-700);
+  color: hsl(var(--clr-black-1) / 0.55);
+  transition: all 0.15s;
+}
+
+.btn--viewItems:hover {
+  color: hsl(var(--clr-black-1) / 0.85);
+}
+
+.btn--increment,
+.btn--decrement {
+  color: hsl(var(--clr-black-1) / 0.5);
+}
+
 .btn--navigation {
   padding-block: 1.3rem;
   font-size: var(--fs-400);
@@ -146,10 +149,51 @@
   color: hsl(var(--clr-medium-orange));
 }
 
+.btn--checkout {
+  font-weight: var(--fw-500);
+  font-size: var(--fs-200);
+  letter-spacing: 0.8px;
+  width: 100%;
+}
+
+// default styles for selected button and link modifiers
+.btn--regular,
+.btn--checkout,
+.link--regular,
+.link--contrast,
+.link--transparent,
+.link--checkout {
+  padding: 1rem 1.6rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.btn--regular,
+.btn--checkout,
+.link--regular,
+.link--checkout {
+  font-weight: var(--fw-600);
+  background-color: hsl(var(--clr-medium-orange));
+  color: hsl(var(--clr-white-1));
+  transition: all 0.15s;
+}
+
+.btn--regular:hover,
+.btn--checkout:hover,
+.link--regular:hover,
+.link--checkout:hover {
+  background-color: hsl(var(--clr-light-orange));
+}
+
+// utility classes
 .align-center {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.text-align {
+  text-align: center;
 }
 
 .mt-5 {
@@ -168,14 +212,11 @@
   background-color: hsl(var(--clr-white-2));
 }
 
+// form error message styles
 .errorMsg {
   font-size: var(--fs-100);
   font-weight: var(--fw-600);
   color: hsl(var(--clr-input-red));
-}
-
-.text-align {
-  text-align: center;
 }
 
 // styles for toast
@@ -199,7 +240,12 @@
     color: hsl(var(--clr-black-1) / 0.5) !important;
   }
 
-  .icon:hover {
+  .icon--close:hover,
+  .icon--hamburger:hover {
+    stroke: hsl(var(--clr-white-1)) !important;
+  }
+
+  .icon--cart:hover {
     fill: hsl(var(--clr-white-1)) !important;
   }
 }
