@@ -24,7 +24,12 @@ function Navigation({
     ariaHiddenStatus !== undefined ? !ariaHiddenStatus : undefined;
 
   return (
-    <section className='audio-products' {...dataProps} aria-hidden={ariaHidden}>
+    <section
+      className='audio-products'
+      {...dataProps}
+      aria-hidden={ariaHidden}
+      role='navigation'
+    >
       {categoryNavigations.map((category, index) => (
         <div key={index} className={`audio-products__${category.category}`}>
           <img
