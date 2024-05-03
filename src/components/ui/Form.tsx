@@ -230,24 +230,34 @@ function Form({ setFormState, setOrderOpen }: FormProps) {
         <h6 className='form__paymentDetails-heading'> Payment Details</h6>
         <div className='form__paymentDetails-container'>
           <h6 className='form__paymentDetails-type'>Payment Method</h6>
-          <div className='form__paymentDetails-radio1Container'>
+          <label
+            className='form__paymentDetails-radio1Container'
+            htmlFor='eMoney'
+          >
             <input
               type='radio'
               id='eMoney'
               value='eMoney'
               {...register('paymentMethod')}
             />
-            <label htmlFor='eMoney'>e-Money</label>
-          </div>
-          <div className='form__paymentDetails-radio2Container'>
+            <span className='form__paymentDetails-radio1Container-text'>
+              e-Money
+            </span>
+          </label>
+          <label
+            className='form__paymentDetails-radio2Container'
+            htmlFor='cashOnDelivery'
+          >
             <input
               type='radio'
               id='cashOnDelivery'
               value='cashOnDelivery'
               {...register('paymentMethod')}
             />
-            <label htmlFor='cashOnDelivery'>Cash on Delivery</label>
-          </div>
+            <span className='form__paymentDetails-radio2Container-text'>
+              Cash on Delivery
+            </span>
+          </label>
           <AnimatePresence>
             {paymentMethod === 'eMoney' ? (
               <>
