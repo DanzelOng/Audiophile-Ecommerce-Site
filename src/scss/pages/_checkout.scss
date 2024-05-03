@@ -72,6 +72,18 @@
     border-radius: 0.4em;
   }
 
+  input[type='radio'] {
+    opacity: 0;
+  }
+
+  // remove input background styling from autocomplete on webkit browsers
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+  }
+
   input::placeholder {
     color: hsl(var(--clr-black-1) / 0.55);
   }
@@ -174,17 +186,47 @@
 
     &-radio1Container,
     &-radio2Container {
-      border: 1px solid hsl(var(--clr-input-gray));
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
       padding: 1rem 1rem;
-      flex-direction: row !important;
-      gap: 1rem !important;
       border-radius: 0.5em;
+      border: 1px solid hsl(var(--clr-input-gray));
     }
 
     &-radio1Container:hover,
+    &-radio1Container:focus-visible,
+    &-radio2Container:hover,
     &-radio2Container:focus-visible {
+      cursor: pointer;
       border: 1px solid hsl(var(--clr-medium-orange));
     }
+
+    ///// Styling for custom radio btn /////
+    &-radio1Container-text::before,
+    &-radio2Container-text::before {
+      content: '';
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+
+      width: 0.8rem;
+      aspect-ratio: 1;
+      border-radius: 100vmax;
+      outline: 1px solid hsl(var(--clr-white-3));
+      outline-offset: 0.35rem;
+      background-color: none;
+      transition: background-color 0.3s;
+    }
+
+    // change bg color when radio button is clicked
+    input[type='radio']:checked + &-radio1Container-text::before,
+    input[type='radio']:checked + &-radio2Container-text::before {
+      background-color: hsl(var(--clr-medium-orange));
+    }
+    //////////
 
     &-eMoneyPINContainer,
     &-eMoneyNumberContainer {
