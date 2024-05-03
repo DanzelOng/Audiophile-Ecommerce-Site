@@ -2,16 +2,16 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import toast from 'react-hot-toast';
 import { useState } from 'react';
-import { getProducts } from '../../data/data';
-import useCart from '../../context/CartContext';
-import Main from '../../layout/Main';
-import AudioGearSection from './AudioGearSection';
-import Navigation from '../ui/Navigation';
-import Button from '../ui/Button';
-import ResponsiveImage from '../ui/ResponsiveImage';
-import RelatedProducts from '../ui/RelatedProducts';
-import convertToSGD from '../../utils/convertToSGD';
-import capitalize from '../../utils/capitalize';
+import { getProducts } from '../data/data';
+import useCart from '../context/CartContext';
+import Main from '../layout/Main';
+import AudioGearSection from '../components/ui/AudioGearSection';
+import Navigation from '../components/ui/Navigation';
+import Button from '../components/ui/Button';
+import ResponsiveImage from '../components/ui/ResponsiveImage';
+import RelatedProducts from '../components/ui/RelatedProducts';
+import convertToSGD from '../utils/convertToSGD';
+import capitalize from '../utils/capitalize';
 
 type ProductsProps = {
   currentPage: string;
