@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { getProducts } from '../../data/data';
 import useCart from '../../context/CartContext';
 import Main from '../../layout/Main';
+import AudioGearSection from './AudioGearSection';
 import Navigation from '../ui/Navigation';
 import Button from '../ui/Button';
 import ResponsiveImage from '../ui/ResponsiveImage';
@@ -144,6 +145,7 @@ function ProductItem({ currentPage }: ProductsProps) {
         <RelatedProducts images={product.other} />
       </div>
       <Navigation dataAttrName='navigation-mode' dataAttrValue='desktop' />
+      <AudioGearSection />
     </Main>
   );
 }

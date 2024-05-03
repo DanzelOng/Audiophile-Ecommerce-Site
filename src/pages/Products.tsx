@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { getProducts, categoryMetaInfo, TMetaInfo } from '../data/data';
 import Main from '../layout/Main';
+import AudioGearSection from '../components/ui/AudioGearSection';
 import Button from '../components/ui/Button';
 import ResponsiveImage from '../components/ui/ResponsiveImage';
 import Navigation from '../components/ui/Navigation';
@@ -53,6 +54,7 @@ function Products({ currentPage }: ProductsProps) {
         ))}
       </ul>
       <Navigation dataAttrName='navigation-mode' dataAttrValue='desktop' />
+      <AudioGearSection />
     </Main>
   );
 }

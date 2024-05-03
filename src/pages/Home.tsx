@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { YX1Earphone, ZX7Speaker, ZX9Speaker } from '../data/data';
 import patternCircleSvg from '/assets/svgs/pattern-circles.svg';
 import Main from '../layout/Main';
+import AudioGearSection from '../components/ui/AudioGearSection';
 import Navigation from '../components/ui/Navigation';
 import Button from '../components/ui/Button';
 import ResponsiveImage from '../components/ui/ResponsiveImage';
@@ -71,6 +72,7 @@ function Home() {
           </Button>
         </div>
       </section>
+      <AudioGearSection />
     </Main>
   );
 }

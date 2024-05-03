@@ -3,7 +3,7 @@ import { audioGearImgs } from '../../data/data';
 
 function AudioGearSection() {
   return (
-    <section className='audio-gear | container'>
+    <section className='audio-gear'>
       <div className='audio-gear__img-container'>
         <ResponsiveImage
           className='audio-gear__img'

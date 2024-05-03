@@ -9,7 +9,6 @@ import Products from '../pages/Products';
 import ProductItem from './ui/ProductItem';
 import Checkout from '../pages/Checkout';
 import PageNotFound from '../pages/PageNotFound';
-import AudioGearSection from './ui/AudioGearSection';
 
 function App() {
   const location = useLocation();
@@ -70,7 +69,6 @@ function App() {
           </Routes>
         </CartProvider>
       </HelmetProvider>
-      {location.pathname !== '/checkout' && <AudioGearSection />}
       <Footer />
     </>
   );
