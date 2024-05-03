@@ -113,7 +113,7 @@
 
 // applied when cart has items
 .btn--cart.hasItems::before {
-  content: attr(data-itemsCount);
+  content: attr(data-itemscount);
   position: absolute;
   inset: 0;
   top: -0.45rem;

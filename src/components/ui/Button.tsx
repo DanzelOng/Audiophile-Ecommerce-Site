@@ -35,7 +35,7 @@ function Button({
       aria-label={ariaLabel}
       aria-controls={ariaControls}
       onClick={onClick}
-      data-itemsCount={itemsCount}
+      data-itemscount={itemsCount}
       className={`btn btn--${type} ${className}`}
     >
       {children}
