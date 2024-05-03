@@ -1,4 +1,4 @@
-@use '../../utils/breakpoints' as breakpoint;
+@use '../utils/breakpoints' as breakpoint;
 
 .product-container {
   & > * + * {
