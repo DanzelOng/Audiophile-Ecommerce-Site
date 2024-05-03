@@ -6,7 +6,7 @@ import Header from './header/Header';
 import Footer from './footer/Footer';
 import Home from '../pages/Home';
 import Products from '../pages/Products';
-import ProductItem from './ui/ProductItem';
+import ProductItem from '../pages/ProductItem';
 import Checkout from '../pages/Checkout';
 import PageNotFound from '../pages/PageNotFound';
 
