@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { CartProvider } from '../context/CartContext';
@@ -9,6 +9,21 @@ import Products from '../pages/Products';
 import ProductItem from '../pages/ProductItem';
 import Checkout from '../pages/Checkout';
 import PageNotFound from '../pages/PageNotFound';
+
+function RemoveTrailingSlash() {
+  const location = useLocation();
+
+  // If the last character of the url is '/'
+  if (location.pathname.match('/.*/$')) {
+    return (
+      // redirect to uppdated URL without trailing slash
+      <Navigate
+        replace={true}
+        to={`${location.pathname.replace(/\/+$/, '')}`}
+      />
+    );
+  }
+}
 
 function App() {
   const location = useLocation();
@@ -22,6 +37,7 @@ function App() {
 
   return (
     <>
+      <RemoveTrailingSlash />
       <HelmetProvider>
         <CartProvider>
           <Header
