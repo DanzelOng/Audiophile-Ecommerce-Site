@@ -12,6 +12,7 @@ import ResponsiveImage from '../components/ui/ResponsiveImage';
 import RelatedProducts from '../components/ui/RelatedProducts';
 import convertToSGD from '../utils/convertToSGD';
 import capitalize from '../utils/capitalize';
+import PageNotFound from './PageNotFound';
 
 type ProductsProps = {
   currentPage: string;
@@ -26,6 +27,12 @@ function ProductItem({ currentPage }: ProductsProps) {
   let category = currentPage.split('/')[1];
   const products = getProducts[category as keyof typeof getProducts];
   const product = products.filter((product) => product.slug === productSlug)[0];
+
+  // render product not found if user enters invalid product slug URL
+  if (!product) {
+    return <PageNotFound type='product' />;
+  }
+
   category = category.slice(0, -1);
 
   const incrementClick = () => {
