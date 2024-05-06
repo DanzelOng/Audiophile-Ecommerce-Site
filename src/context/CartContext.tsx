@@ -1,4 +1,5 @@
 import {
+  useEffect,
   useReducer,
   useContext,
   useCallback,
@@ -13,12 +14,12 @@ export type CartItem = {
   qty: number;
 };
 
-type StateType = {
+type CartStateType = {
   cart: CartItem[];
 };
 
 // initial reducer state
-const initialState: StateType = {
+const initialState: CartStateType = {
   cart: [
     {
       cartName: 'XX99 MK II',
@@ -59,6 +60,12 @@ const initialState: StateType = {
   ],
 };
 
+// define initializer function to return initial state
+function initializer(initState: CartStateType) {
+  const result: string | null = localStorage.getItem('localCart');
+  return result ? JSON.parse(result) : initState;
+}
+
 ////////// Reducer Set Up //////////
 
 // define reducer action types
@@ -75,7 +82,7 @@ type ReducerAction = {
 };
 
 // define reducer
-function reducer(state: StateType, action: ReducerAction): StateType {
+function reducer(state: CartStateType, action: ReducerAction): CartStateType {
   switch (action.type) {
     case REDUCER_ACTION_TYPE.INCREMENT: {
       const cart: CartItem[] = state.cart.map((item) => {
@@ -108,8 +115,8 @@ function reducer(state: StateType, action: ReducerAction): StateType {
 ////////// Context Set Up //////////
 
 // create custom context
-function useCartContext(initialState: StateType) {
-  const [state, dispatch] = useReducer(reducer, initialState);
+function useCartContext(initialState: CartStateType) {
+  const [state, dispatch] = useReducer(reducer, initialState, initializer);
 
   // memoize cart functions
   const incrementItem = useCallback((qty: number, cartName: string) => {
@@ -131,6 +138,10 @@ function useCartContext(initialState: StateType) {
       type: REDUCER_ACTION_TYPE.CLEAR_CART,
     });
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('localCart', JSON.stringify(state));
+  }, [state]);
 
   return { state, incrementItem, decrementItem, clearCart };
 }
